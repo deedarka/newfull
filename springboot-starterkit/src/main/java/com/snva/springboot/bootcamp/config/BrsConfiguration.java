@@ -58,7 +58,7 @@ public class BrsConfiguration {
     @Bean
     public Docket swaggerBRSApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("BRS")
+                .groupName("Recruitment Apis")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.snva.springboot.bootcamp.controller.v1.api"))
                 .paths(PathSelectors.any())
@@ -73,7 +73,7 @@ public class BrsConfiguration {
     @Bean
     public Docket swaggerUserApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("User")
+                .groupName("Fake Users")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.snva.springboot.bootcamp.config"))
                 .paths(PathSelectors.any())
@@ -83,7 +83,7 @@ public class BrsConfiguration {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Learnerdrome - REST APIs")
+        return new ApiInfoBuilder().title("Learnerdrome - Recruitment REST APIs")
                 .description("Spring Boot starter kit application.").termsOfServiceUrl("")
                 .contact(new Contact("Dheeraj Singh", "https://medium.com/the-resonant-web", "dheerajthedev@outlook.com"))
                 .license("Apache License Version 2.0")

@@ -57,6 +57,7 @@ public class ApplicantMapper {
                 .setUniversity(applicant.getUniversity())
                 .setId(applicant.getId())
                 .setTotalExp(applicant.getTotalExp())
+                .setMarkStatus(applicant.getMarkStatus())
                 .setRemarks(remarkList);
     }
 

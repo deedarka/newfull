@@ -80,7 +80,7 @@ public class ApplicantController {
         try {
             fileName = fileStorageService.storeFile(file);
             fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/downloadFile/")
+                    .path("/api/v1/applicant/downloadFile/")
                     .path(fileName)
                     .toUriString();
             ResumeParsingResponse resumeParsingResponse = resumeParsingService.getResumeParsed(fileStorageService.loadFileAsResource(fileName));
@@ -118,7 +118,7 @@ public class ApplicantController {
             try {
                 fileName = fileStorageService.storeFile(file);
                 fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                        .path("/downloadFile/")
+                        .path("/api/v1/applicant/downloadFile/")
                         .path(fileName)
                         .toUriString();
                 ResumeParsingResponse resumeParsingResponse = resumeParsingService.getResumeParsed(fileStorageService.loadFileAsResource(fileName));
@@ -218,7 +218,7 @@ public class ApplicantController {
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(contentType))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                .header(HttpHeaders.ACCEPT, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
 
