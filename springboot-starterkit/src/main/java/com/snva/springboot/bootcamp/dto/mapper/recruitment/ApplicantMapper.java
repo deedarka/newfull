@@ -16,7 +16,7 @@ import java.util.List;
 public class ApplicantMapper {
 
     public static ApplicantDto toApplicantDto(Applicant applicant) {
-        List<Remark> remarkList= applicant.getRemarks();
+        List<Remark> remarkList = applicant.getRemarks();
 //        remarkList.forEach(x->
 //                {
 //                    remarkList.add(new Remark().setRemark(x.getRemark()).setDateCreated(new Date()).setDateModified(new Date()).setUserId(applicant.getRecruiterId()));
@@ -24,16 +24,6 @@ public class ApplicantMapper {
 //        );
 
         return new ApplicantDto()
-                .setId(applicant.getId())
-                .setUniversity(applicant.getUniversity())
-                .setSkills(applicant.getSkills())
-                .setPhone(applicant.getPhone())
-                .setEmail(applicant.getEmail())
-                .setResumeLinks(applicant.getResumeLinks())
-                .setDesignation(applicant.getDesignation())
-                .setDegree(applicant.getDegree())
-                .setTotalExp(applicant.getTotalExp())
-                .setName(applicant.getName())
                 .setPhone(applicant.getPhone())
                 .setEmail(applicant.getEmail())
                 .setDesignation(applicant.getDesignation())
@@ -56,6 +46,7 @@ public class ApplicantMapper {
                 .setSkills(applicant.getSkills())
                 .setUniversity(applicant.getUniversity())
                 .setId(applicant.getId())
+                .setApplicantType(applicant.getApplicantType())
                 .setTotalExp(applicant.getTotalExp())
                 .setMarkStatus(applicant.getMarkStatus())
                 .setRemarks(remarkList);
@@ -64,33 +55,47 @@ public class ApplicantMapper {
     public static Applicant toApplicant(ApplicantDto applicant) {
         // List<Technology> getTechno = bootcamp.getTechnologyStack();
         return new Applicant()
-                .setId(applicant.getId())
-                .setUniversity(applicant.getUniversity())
-                .setSkills(applicant.getSkills())
                 .setPhone(applicant.getPhone())
-                .setEmail(applicant.getEmail())
+                .setName(applicant.getName())
                 .setResumeLinks(applicant.getResumeLinks())
+                .setEmail(applicant.getEmail())
                 .setDesignation(applicant.getDesignation())
                 .setDegree(applicant.getDegree())
+                .setWillingRelocation(applicant.isWillingRelocation())
+                .setVisaStatus(applicant.getVisaStatus())
+                .setTags(applicant.getTags())
+                .setSubmissionStatus(applicant.getSubmissionStatus())
+                .setSubmissionDate(applicant.getSubmissionDate())
+                .setResumeSource(applicant.getResumeSource())
+                .setRecruiterId(applicant.getRecruiterId())
+                .setPositionTitle(applicant.getPositionTitle())
+                .setPositionReceivingDate(applicant.getPositionReceivingDate())
+                .setPayRate(applicant.getPayRate())
+                .setDateOfContact(applicant.getDateOfContact())
+                .setCandidateLocation(applicant.getCandidateLocation())
+                .setCandidateEmploymentType(applicant.getCandidateEmploymentType())
+                .setSkills(applicant.getSkills())
+                .setUniversity(applicant.getUniversity())
+                .setId(applicant.getId())
+                .setApplicantType(applicant.getApplicantType())
                 .setTotalExp(applicant.getTotalExp())
-                .setName(applicant.getName());
+                .setMarkStatus(applicant.getMarkStatus())
+                .setRemarks(applicant.getRemarks());
     }
 
-    public  static  Applicant fromEditApplicanntRequestTpApplicant(EditApplicantRequest editApplicantRequest){
+    public static Applicant fromEditApplicanntRequestTpApplicant(EditApplicantRequest editApplicantRequest) {
 
-        List<Remark> remarks= new ArrayList<Remark>();
-        List<com.snva.springboot.bootcamp.controller.v1.request.recruitment.Remark> remarkList= editApplicantRequest.getRemarks();
-        remarkList.forEach(x->
+        List<Remark> remarks = new ArrayList<Remark>();
+        List<com.snva.springboot.bootcamp.controller.v1.request.recruitment.Remark> remarkList = editApplicantRequest.getRemarks();
+        remarkList.forEach(x ->
                 {
                     remarks.add(new Remark().setRemark(x.getRemark()).setDateCreated(new Date()).setDateModified(new Date()).setUserId(""));
                 }
-         );
-
-        return  new Applicant()
-
-
+        );
+        return new Applicant()
                 .setPhone(editApplicantRequest.getPhone())
                 .setEmail(editApplicantRequest.getEmail())
+                .setApplicantType(editApplicantRequest.getApplicantType())
                 .setDesignation(editApplicantRequest.getDesignation())
                 .setDegree(editApplicantRequest.getDegree())
                 .setName(editApplicantRequest.getName())
@@ -114,5 +119,4 @@ public class ApplicantMapper {
                 .setTotalExp(editApplicantRequest.getTotalExp())
                 .setRemarks(remarks);
     }
-
 }

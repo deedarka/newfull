@@ -5,10 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.springframework.data.mongodb.core.index.IndexDirection;
-import org.springframework.data.mongodb.core.index.Indexed;
-
-import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
 
@@ -28,30 +24,19 @@ public class ApplicantDto {
     private List<String> skills;
     private List<String> resumeLinks;
     private Date dateOfContact;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
     private String recruiterId;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
     private Date positionReceivingDate;
     private Date submissionDate;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
     private String positionTitle;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
     private String candidateLocation;
     private String visaStatus;
-    private  float payRate;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
-    private  String  candidateEmploymentType;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
-    private  String submissionStatus;
-    private  String resumeSource;
-    private  boolean willingRelocation;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
+    private float payRate;
+    private String candidateEmploymentType;
+    private String submissionStatus;
+    private String applicantType;
+    private String resumeSource;
+    private boolean willingRelocation;
     private List<Remark> remarks;
     private List<String> tags;
     private String markStatus;
-
-
 }
-
-
-
