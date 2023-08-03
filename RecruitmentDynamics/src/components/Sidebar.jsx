@@ -48,7 +48,7 @@ function Sidebar() {
                 3rd Party Applicants
               </li>
             </Link>
-            <Link to="/bootcamps" className="link">
+            <Link to="/dashboard/applicantsbc" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
                 Bootcamp Applicants

@@ -1,11 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { RouterProvider } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { router } from "./App";
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+const theme = createTheme({
+  palette: {
+    primary: { main: "#3a34d2" }
+  }
+});
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <StrictMode>
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </StrictMode>
 );

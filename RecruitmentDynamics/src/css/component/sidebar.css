@@ -1,14 +1,14 @@
 .sidebar {
     flex: 1;
     height: calc(100vh - 50px);
-    background-color: rgb(251, 251, 255);
-    position: sticky;
+    background-color: rgb(219, 220, 215);
+    position: fixed;
     top: 50px;
   }
   
   .sidebarWrapper {
     padding: 20px;
-    color: #555;
+    color: #484343;
   }
   
   .sidebarMenu {
@@ -16,7 +16,7 @@
   }
   
   .sidebarTitle {
-    font-size: 13px;
+    font-size: 18px;
     color: rgb(187, 186, 186);
   }
   
@@ -35,10 +35,10 @@
   
   .sidebarListItem.active,
   .sidebarListItem:hover {
-    background-color: rgb(240, 240, 255);
+    background-color: rgb(183, 183, 192);
   }
   
   .sidebarIcon{
       margin-right: 5px;
-      font-size: 20px !important;
+      font-size: 30px !important;
   }
