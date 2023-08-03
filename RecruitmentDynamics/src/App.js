@@ -17,6 +17,7 @@ import "./styles.css";
 import { AuthLayout } from "./components/AuthLayout";
 import Bootcamp from "./components/Bootcamp";
 import { BootcampPage } from "./pages/Bootcamp";
+import { BootcampList3pPage } from "./pages/BootcampList3p";
 
 // ideally this would be an API call to server to get logged in user data
 
@@ -49,6 +50,7 @@ export const router = createBrowserRouter(
 
       <Route path="/dashboard" element={<ProtectedLayout />}>
         <Route path="applicantsbc" element={<BootcampListPage />} />
+        <Route path="applicants3p" element={<BootcampList3pPage />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="applicantsbc/:bootcampId" element={<BootcampPage />} />

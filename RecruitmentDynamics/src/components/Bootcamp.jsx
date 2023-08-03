@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import FileViewer from 'react-file-viewer';
 import '../css/page/product.css'
 import Chart from './Chart';
 import { productData } from "../dummyData";
-import { DateRange, Publish } from '@material-ui/icons'
+import { DatePicker } from 'react-datepicker'
+import AnimatedModal from "./AnimatedModal";
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -66,7 +69,8 @@ function Bootcamp() {
     ];
 
     return (
-        <div className="product" style={{marginLeft:"12%"}}>
+        <div className="product" style={{ marginLeft: "12%" }}>
+           
             <div className="productTitleContainer">
                 <h1 className="productTitle">Applicant</h1>
 
@@ -80,10 +84,8 @@ function Bootcamp() {
                                     <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
                                         Id {data.id}
                                     </Typography>
-                                    <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
-                                        <Link to="/newproduct">
-                                            <button className="saveRemark">Add Remark</button>
-                                        </Link>
+                                    <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>                                        
+                                        <AnimatedModal></AnimatedModal>                                        
                                     </Typography>
                                 </div>
                                 <Grid container spacing={3}>
@@ -93,7 +95,7 @@ function Bootcamp() {
                                         <InputLabel
                                             sx={{
                                                 display: "flex",
-                                                justifyContent: "center",
+                                                justifyContent: "start",
                                                 fontWeight: 700
                                             }}
                                         >
@@ -117,7 +119,7 @@ function Bootcamp() {
                                         <InputLabel
                                             sx={{
                                                 display: "flex",
-                                                justifyContent: "center",
+                                                justifyContent: "start",
                                                 fontWeight: 700
                                             }}
                                         >
@@ -141,7 +143,7 @@ function Bootcamp() {
                                         <InputLabel
                                             sx={{
                                                 display: "flex",
-                                                justifyContent: "center",
+                                                justifyContent: "start",
                                                 fontWeight: 700
                                             }}
                                         >
@@ -161,12 +163,57 @@ function Bootcamp() {
                                             variant="outlined"
                                         />
                                     </Grid>
-
                                     <Grid item xs={12} sm={2}>
                                         <InputLabel
                                             sx={{
                                                 display: "flex",
-                                                justifyContent: "center",
+                                                justifyContent: "start",
+                                                fontWeight: 700
+                                            }}
+                                        >
+                                            University
+                                        </InputLabel>
+                                    </Grid>
+                                    <Grid item xs={12} sm={10}>
+                                        <TextField
+                                            required
+                                            id={data.university}
+                                            name={data.university}
+                                            label={data.university}
+                                            helperText
+                                            fullWidth
+                                            size="small"
+                                            autoComplete="off"
+                                            variant="outlined"
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={2}>
+                                        <InputLabel
+                                            sx={{
+                                                display: "flex",
+                                                justifyContent: "start",
+                                                fontWeight: 700
+                                            }}
+                                        >
+                                            Skills
+                                        </InputLabel>
+                                    </Grid>
+                                    <Grid item xs={12} sm={10}>
+                                        <TextField
+                                            id={data.skills}
+                                            name={data.skills}
+                                            label={data.skills}
+                                            multiline
+                                            fullWidth
+                                            text
+                                            rows={5}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={2}>
+                                        <InputLabel
+                                            sx={{
+                                                display: "flex",
+                                                justifyContent: "start",
                                                 fontWeight: 700
                                             }}
                                         >
@@ -212,30 +259,7 @@ function Bootcamp() {
                                             variant="outlined"
                                         />
                                     </Grid>
-                                    <Grid item xs={12} sm={2}>
-                                        <InputLabel
-                                            sx={{
-                                                display: "flex",
-                                                justifyContent: "center",
-                                                fontWeight: 700
-                                            }}
-                                        >
-                                            Skills
-                                        </InputLabel>
-                                    </Grid>
-                                    <Grid item xs={12} sm={10}>
-                                        <TextField
-                                            id={data.skills}
-                                            name={data.skills}
-                                            label={data.skills}
-                                            multiline
-                                            fullWidth
-                                            text
-                                            rows={5}
-                                        />
-                                    </Grid>
-
-                                    {/* dsds */}                                   
+                                    {/* dsds */}
                                     <Grid item xs={12} sm={4}>
                                         <InputLabel
                                             sx={{
@@ -248,7 +272,7 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={8}>
-                                        <DateRange></DateRange>
+
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
                                         <InputLabel
@@ -262,7 +286,7 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={8}>
-                                        <DateRange></DateRange>
+
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
                                         <InputLabel
@@ -276,7 +300,7 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={8}>
-                                       <DateRange></DateRange>
+
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
                                         <InputLabel
@@ -377,7 +401,7 @@ function Bootcamp() {
                                         />
                                     </Grid>
                                     <Grid item xs={12} sm={1.5}>
-                                    <InputLabel
+                                        <InputLabel
                                             sx={{
                                                 display: "flex",
                                                 justifyContent: "center",
@@ -387,7 +411,7 @@ function Bootcamp() {
                                             USD
                                         </InputLabel>
                                     </Grid>
-                                   
+
                                     {/* End */}
                                     <Grid item xs={12} sm={6} />
                                     <Grid item xs={12} sm={5} />
@@ -404,48 +428,17 @@ function Bootcamp() {
                 </div>
                 <div className="productTopRight">
                     {
-                        url.includes(".doc") ? <iframe src={url} width='100%' height='100%' frameborder='0'>
-                        </iframe> : <iframe src={url} width='100%' height='100%' frameborder='0'>
-                        </iframe>
+                        url.includes(".doc") ?
+                            <FileViewer
+                                fileType={'docx'}
+                                filePath={url}
+                            />
+                            : <iframe src={url} width='100%' height='100%' frameborder='0'>
+                            </iframe>
                     }
-
-
-
                 </div>
             </div>
-
         </div>
     );
 }
-
 export default Bootcamp;
-
-
-// <div className="productBottom">
-// <form className="productForm">
-//     <div className="productFormLeft">
-//         <label>Product Name</label>
-//         <input type="text" placeholder="Apple AirPod" />
-//         <label>In Stock</label>
-//         <select name="inStock" id="idStock">
-//             <option value="yes">Yes</option>
-//             <option value="no">No</option>
-//         </select>
-//         <label>Active</label>
-//         <select name="active" id="active">
-//             <option value="yes">Yes</option>
-//             <option value="no">No</option>
-//         </select>
-//     </div>
-//     <div className="productFormRight">
-//         <div className="productUpload">
-//             <img src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="productUploadImg" />
-//             <label for="file">
-//                 <Publish/>
-//             </label>
-//             <input type="file" id="file" style={{display:"none"}} />
-//         </div>
-//         <button className="productButton">Update</button>
-//     </div>
-// </form>
-// </div>

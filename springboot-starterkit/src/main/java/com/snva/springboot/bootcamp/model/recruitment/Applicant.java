@@ -37,6 +37,8 @@ public class Applicant {
     @Indexed(unique = true, direction = IndexDirection.DESCENDING)
     private  String  candidateEmploymentType;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING)
+    private String  applicantType;
+    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
     private  String submissionStatus;
     private  String resumeSource;
     private  boolean willingRelocation;

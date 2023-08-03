@@ -65,6 +65,8 @@ public class EditApplicantRequest {
         @NotEmpty(message = "{constraints.NotEmpty.message}")
         private String resumeSource;
         @NotEmpty(message = "{constraints.NotEmpty.message}")
+        private String applicantType;
+        @NotEmpty(message = "{constraints.NotEmpty.message}")
         private boolean willingRelocation;
         private List<Remark> remarks;
         private List<String> tags;
