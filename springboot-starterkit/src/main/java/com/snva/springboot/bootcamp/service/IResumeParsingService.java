@@ -21,6 +21,10 @@ public interface IResumeParsingService {
     ApplicantDto applicantById(String id);
 
     ApplicantDto updateApplicant(EditApplicantRequest editApplicantRequest);
+
+    List<ApplicantDto> allBenchApplicants();
+
+    List<ApplicantDto> all3RdPartyApplicants();
 //    List<ResumeParsingResponse> addApplicant(String booleanSearch);
 
 }

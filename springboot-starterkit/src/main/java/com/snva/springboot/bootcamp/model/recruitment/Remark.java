@@ -13,7 +13,7 @@ import java.util.Date;
 @Accessors(chain = true)
 public class Remark {
     private String userId;
-    private String Remark;
+    private String remark;
     private Date dateCreated;
     private Date dateModified;
 }

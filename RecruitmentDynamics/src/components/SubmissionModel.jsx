@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
+import { DataGrid } from '@mui/x-data-grid';
 const useStyles = makeStyles(theme => ({
     modal: {
         display: 'flex',
@@ -18,11 +19,9 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(2, 4, 3),
     },
 }));
-export default function AnimatedModal(data) {
-
-
-
+export default function SubmissionModel(props) {
     const classes = useStyles();
+    const [data, setData] = useState(props.remarks)
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
         setOpen(true);
@@ -32,8 +31,12 @@ export default function AnimatedModal(data) {
     };
     return (
         <div>
-            <Button variant="contained" color="secondary" onClick={handleOpen}>
-               Add Remarks
+
+
+
+            
+            <Button variant="contained" style={{width:"200px"}} color="warning" onClick={handleOpen}>
+             Submissions 
             </Button>
             <Modal
                 aria-labelledby="transition-modal-title"
@@ -49,10 +52,29 @@ export default function AnimatedModal(data) {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                        <h2>Add Recuriter/Manager Remarks </h2>
-                        <p>
-         
-                        </p>
+                        <h2>Add Submissions Data </h2>
+                        <div class="table-responsive">
+  <table class="table table-striped w-auto">
+    <thead>
+      <tr>
+        <th scope="col">Sr #</th>
+        <th scope="col">User</th>
+        <th scope="col">Remark</th>
+        <th scope="col">Date Created</th>
+        <th scope="col">Date Modified</th>
+      </tr>
+    </thead>
+    <tbody>
+    {
+     
+    }
+    
+     
+    </tbody>
+  </table>
+</div>
+                    
+                   
                     </div>
                 </Fade>
             </Modal>

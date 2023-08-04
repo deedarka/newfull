@@ -13,6 +13,7 @@ import {
   ChatBubbleOutline,
   WorkOutline,
   Report,
+  WorkSharp,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
@@ -56,7 +57,11 @@ function Sidebar() {
             </Link>
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
-              Transactions
+              Vendors
+            </li>
+            <li className="sidebarListItem">
+              <BarChart className="sidebarIcon" />
+              Clients
             </li>
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />

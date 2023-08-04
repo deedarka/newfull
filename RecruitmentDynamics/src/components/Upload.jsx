@@ -27,6 +27,7 @@ const UploadResume = ({ profile }) => {
         const uploadPromises = filesToUpload.map((file) => {
             let formData = new FormData;
             formData.set('file', file, file.name);
+            formData.set('applicantType',  profileJson.applicantType);
 
             return fetch(`${baseurl}/applicant/uploadFile`, {
                 method: 'POST',

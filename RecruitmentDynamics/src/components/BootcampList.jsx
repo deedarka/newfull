@@ -18,7 +18,8 @@ function BootcampList() {
     setLoading(true);
 
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkaGVlcmFqLnNpbmdoQHNudmEuY29tIiwicm9sZXMiOlsiUEFSVElDSVBBTlQiXSwiZXhwIjoxNjkxMjcwNDc5fQ.LN4mMku82xtltJTY0lim-Tda_BzyrWqII-RfFcQ4jXgiO8gVpIAvTyDi9xPoa7TbfqX5oWVgrLAwtq3rQg0_gA");
+    // myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkaGVlcmFqLnNpbmdoQHNudmEuY29tIiwicm9sZXMiOlsiUEFSVElDSVBBTlQiXSwiZXhwIjoxNjkxMjcwNDc5fQ.LN4mMku82xtltJTY0lim-Tda_BzyrWqII-RfFcQ4jXgiO8gVpIAvTyDi9xPoa7TbfqX5oWVgrLAwtq3rQg0_gA");
+    myHeaders.append("Authorization", `Bearer ${user.response}`);
 
     var requestOptions = {
       method: 'GET',
@@ -78,7 +79,7 @@ console.log("TTTTT"+ JSON.stringify(user))
   //   setData(data.filter((item) => item.id !== id));
   // };
 
-
+  user.applicantType="bench"
   return (
     <div className="applicantList">
       <div className="productTitleContainer">
@@ -97,9 +98,17 @@ console.log("TTTTT"+ JSON.stringify(user))
       <DataGrid
         rows={data}
         disableSelectionOnClick
-        columns={columns}
-        pageSize={data.length}
-
+        columns={columns}   
+        pageSizeOptions={[5]}
+        checkboxSelection
+        disableRowSelectionOnClick     
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 5,
+            },
+          },
+        }}
       />
     </div>
   );

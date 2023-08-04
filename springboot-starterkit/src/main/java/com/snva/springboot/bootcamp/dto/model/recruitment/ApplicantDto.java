@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,16 +19,16 @@ public class ApplicantDto {
     private String email;
     private String phone;
     private String name;
-    private int totalExp;
-    private List<Object> university;
-    private List<String> designation;
-    private List<Object> degree;
-    private List<String> skills;
-    private List<String> resumeLinks;
-    private Date dateOfContact;
+    private int totalExp ;
+    private List<Object> university= new ArrayList<>();
+    private List<String> designation= new ArrayList<>();
+    private List<Object> degree = new ArrayList<>();
+    private List<String> skills= new ArrayList<>();
+    private List<String> resumeLinks= new ArrayList<>();
+    private Date dateOfContact = new Date();
     private String recruiterId;
-    private Date positionReceivingDate;
-    private Date submissionDate;
+    private Date positionReceivingDate= new Date();
+    private Date submissionDate= new Date();
     private String positionTitle;
     private String candidateLocation;
     private String visaStatus;
@@ -35,8 +37,8 @@ public class ApplicantDto {
     private String submissionStatus;
     private String applicantType;
     private String resumeSource;
-    private boolean willingRelocation;
-    private List<Remark> remarks;
-    private List<String> tags;
+    private boolean willingRelocation=false;
+    private List<Remark> remarks = new ArrayList<>();
+    private List<String> tags = new ArrayList<>();
     private String markStatus;
 }

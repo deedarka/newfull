@@ -27,6 +27,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.snva.springboot.bootcamp.exception.EntityType.STOP;
 import static com.snva.springboot.bootcamp.exception.ExceptionType.ENTITY_NOT_FOUND;
@@ -140,6 +141,28 @@ public class ResumeServiceImpl implements  IResumeParsingService {
             return ApplicantMapper.toApplicantDto(applicantRepository.save(applicantToSave));
         }
         throw exception(STOP, ENTITY_NOT_FOUND, editApplicantRequest.getId());
+    }
+
+    @Override
+    public List<ApplicantDto> allBenchApplicants() {
+        List<Applicant> applicants = applicantRepository.findAll();
+        applicants= applicants.stream().filter(x->x.getApplicantType().equalsIgnoreCase("bench")).collect(Collectors.toList());
+        List<ApplicantDto> applicantDtos =new ArrayList<>();
+        if (applicants.size()>0){
+            applicants.forEach(x-> applicantDtos.add(ApplicantMapper.toApplicantDto(x)) );
+        }
+        return  applicantDtos;
+    }
+
+    @Override
+    public List<ApplicantDto> all3RdPartyApplicants() {
+        List<Applicant> applicants = applicantRepository.findAll();
+        applicants= applicants.stream().filter(x->x.getApplicantType().equalsIgnoreCase("3rdparty")).collect(Collectors.toList());
+        List<ApplicantDto> applicantDtos =new ArrayList<>();
+        if (applicants.size()>0){
+            applicants.forEach(x-> applicantDtos.add(ApplicantMapper.toApplicantDto(x)) );
+        }
+        return  applicantDtos;
     }
 
     private ResumeParsingResponse getFromJson(String body) throws JsonProcessingException {
