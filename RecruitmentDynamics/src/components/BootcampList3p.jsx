@@ -18,7 +18,7 @@ function BootcampList3p() {
     setLoading(true);
 
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkaGVlcmFqLnNpbmdoQHNudmEuY29tIiwicm9sZXMiOlsiUEFSVElDSVBBTlQiXSwiZXhwIjoxNjkxMjcwNDc5fQ.LN4mMku82xtltJTY0lim-Tda_BzyrWqII-RfFcQ4jXgiO8gVpIAvTyDi9xPoa7TbfqX5oWVgrLAwtq3rQg0_gA");
+    myHeaders.append("Authorization", `Bearer ${user.response}`);
 
     var requestOptions = {
       method: 'GET',
@@ -77,12 +77,12 @@ console.log("TTTTT"+ JSON.stringify(user))
   // const handleDelete = (id) => {
   //   setData(data.filter((item) => item.id !== id));
   // };
-
+user.applicantType="3rdparty"
 
   return (
     <div className="applicantList">
       <div className="productTitleContainer">
-        <h1 className="productTitle">All Bootcamp Applicants</h1>
+        <h1 className="productTitle">All 3Rd Party Applicants</h1>
         
       </div>
       <Typography gutterBottom sx={{ paddingBottom: 5 }}>

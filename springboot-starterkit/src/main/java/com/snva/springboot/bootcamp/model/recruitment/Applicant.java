@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,8 +27,8 @@ public class Applicant {
     @Indexed(unique = true, direction = IndexDirection.DESCENDING)
     private String recruiterId;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING)
-    private Date positionReceivingDate;
-    private Date submissionDate;
+    private Date positionReceivingDate = new Date();
+    private Date submissionDate = new Date();
     @Indexed(unique = true, direction = IndexDirection.DESCENDING)
     private String positionTitle;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING)
@@ -46,13 +47,13 @@ public class Applicant {
     private String phone;
     private String name;
     private int totalExp;
-    private List<Object> university;
-    private List<String> designation;
-    private List<Object> degree;
+    private List<Object> university= new ArrayList<>();
+    private List<String> designation= new ArrayList<>();
+    private List<Object> degree= new ArrayList<>();
     @Indexed(unique = true, direction = IndexDirection.DESCENDING)
-    private List<String> skills;
-    private List<String> resumeLinks;
-    private List<Remark> remarks;
-    private List<String> tags;
+    private List<String> skills= new ArrayList<>();
+    private List<String> resumeLinks= new ArrayList<>();
+    private List<Remark> remarks= new ArrayList<>();
+    private List<String> tags= new ArrayList<>();
     private String markStatus;
 }

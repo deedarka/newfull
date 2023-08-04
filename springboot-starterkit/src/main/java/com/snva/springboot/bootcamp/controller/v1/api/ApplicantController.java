@@ -37,6 +37,7 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.*;
 
@@ -72,11 +73,14 @@ public class ApplicantController {
 
     @PostMapping("/uploadFile")
     @ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey")})
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file,@RequestParam("applicantType") String applicantType) {
         ResponseEntity<String> response = null;
         UploadFileResponse res = new UploadFileResponse();
         String fileName = "";
         String fileDownloadUri = "";
+        if ((file==null || file.getSize()<=0) && (applicantType.equalsIgnoreCase("bench") || applicantType.equalsIgnoreCase("3rdparty") )){
+            res = new UploadFileResponse("There Must be a file or an applicant type", "", "", 0, "err.getMessage()", null);
+        }
         try {
             fileName = fileStorageService.storeFile(file);
             fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -85,6 +89,7 @@ public class ApplicantController {
                     .toUriString();
             ResumeParsingResponse resumeParsingResponse = resumeParsingService.getResumeParsed(fileStorageService.loadFileAsResource(fileName));
             ApplicantDto applicantDto = getApplicantDto(fileDownloadUri, resumeParsingResponse);
+            applicantDto.setApplicantType(applicantType);
             applicantDto = resumeParsingService.addApplicant(applicantDto);
             res = new UploadFileResponse(fileName, fileDownloadUri, file.getContentType(), file.getSize(), "", applicantDto);
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -173,7 +178,7 @@ public class ApplicantController {
 
     @PostMapping("/editApplicant")
     @ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey")})
-    public ResponseEntity<ApplicantDto> editApplicant(@RequestBody EditApplicantRequest editApplicantRequest) {
+    public ResponseEntity<ApplicantDto> editApplicant(@Valid @RequestBody EditApplicantRequest editApplicantRequest) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> list= authentication.getAuthorities();
         String user=(String)authentication.getPrincipal();
@@ -191,11 +196,26 @@ public class ApplicantController {
         return ResponseEntity.ok(resumeParsingService.applicantById(id));
     }
 
+    @GetMapping("/showAllBenchApplicants")
+    @ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey")})
+    public List<ApplicantDto> showAllBenchApplicants() {
+        return resumeParsingService.allBenchApplicants();
+    }
+
     @GetMapping("/showAllApplicants")
     @ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey")})
-    public List<ApplicantDto> showAllApplicants() {
+    public List<ApplicantDto> showBenchApplicants() {
         return resumeParsingService.allApplicants();
     }
+
+
+
+    @GetMapping("/showAll3rdPartyApplicants")
+    @ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey")})
+    public List<ApplicantDto> showAll3RdApplicants() {
+        return resumeParsingService.all3RdPartyApplicants();
+    }
+
 
     @GetMapping("/downloadFile/{fileName:.+}")
     @ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey")})
@@ -243,7 +263,7 @@ public class ApplicantController {
     private Session getSession() {
         
         final String fromEmail = "dheeraj.singh@snva.com"; //requires valid gmail id
-        final String password = "dheerajthedev@123"; // correct password for gmail id
+        final String password = "dheerajthedev@9891"; // correct password for gmail id
 
         System.out.println("TLSEmail Start");
         Properties props = new Properties();
