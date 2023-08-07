@@ -9,8 +9,9 @@ import { Typography } from '@mui/material';
 import UploadResume from '../components/Upload';
 import { useAuth } from "../hooks/useAuth";
 function BootcampList() {
+  const [upload, setUpload] = useState(false);
   const { login , user,logout} = useAuth();
-
+ 
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({})
 
@@ -41,7 +42,7 @@ function BootcampList() {
 
 
 
-  }, []);
+  }, [upload]);
 
   const columns = [
     { field: "Sl No", headerName: "Sl#", width: 10 },
@@ -91,7 +92,7 @@ console.log("TTTTT"+ JSON.stringify(user))
         <button variant="h6" style={{margin:"10px"}} className="productTitle applicantsAll"  sx={{ padding: 5 }} >All</button>
         <button variant="h6" style={{margin:"10px"}} className="productTitle applicantsByFarmed"  sx={{ padding: 5 }} >Farmed</button>
         <button variant="h6" style={{margin:"10px"}} className="productTitle applicantsByPending"  sx={{ padding: 5 }} >Pending</button>
-         <span>Upload a profile ? <UploadResume profile={JSON.stringify(user)}></UploadResume></span> 
+         <span>Upload a profile ? <UploadResume upload={setUpload} profile={JSON.stringify(user)}></UploadResume></span> 
       
       </Typography>
 

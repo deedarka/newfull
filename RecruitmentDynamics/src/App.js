@@ -50,10 +50,11 @@ export const router = createBrowserRouter(
 
       <Route path="/dashboard" element={<ProtectedLayout />}>
         <Route path="applicantsbc" element={<BootcampListPage />} />
-        <Route path="applicants3p" element={<BootcampList3pPage />} />
+        <Route path="applicantstp" element={<BootcampList3pPage />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="applicantsbc/:bootcampId" element={<BootcampPage />} />
+        <Route path="applicantstp/:bootcampId" element={<BootcampPage />} />
       </Route>
     </Route>
   )

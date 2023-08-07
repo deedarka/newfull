@@ -43,7 +43,7 @@ function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
-            <Link to="/dashboard/applicants3p" className="link">
+            <Link to="/dashboard/applicantstp" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
                 3rd Party Applicants

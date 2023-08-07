@@ -33,6 +33,7 @@ public class ApplicantDto {
     private String candidateLocation;
     private String visaStatus;
     private float payRate;
+    private  Recruiter recruiter;
     private String candidateEmploymentType;
     private String submissionStatus;
     private String applicantType;

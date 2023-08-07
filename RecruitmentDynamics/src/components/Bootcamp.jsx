@@ -18,12 +18,12 @@ import {
 import { useAuth } from "../hooks/useAuth";
 import React, { useEffect, useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
-import { Box, Button, Checkbox, FormControl, Grid, IconButton, Input, InputLabel, List, ListItem, ListItemButton, ListItemIcon, ListItemText, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
+import { Avatar, Box, Button, CardHeader, Checkbox, FormControl, Grid, IconButton, Input, InputAdornment, InputLabel, List, ListItem, ListItemButton, ListItemIcon, ListItemText, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 import { CheckBox, Label, LabelImportant } from "@material-ui/icons";
 import CustomList from "./CustomList";
 import ChipsArray from "./GenericChips";
 function Bootcamp() {
-
+    const [upload, setUpload] = React.useState(false);
     const [checked, setChecked] = React.useState([0]);
     const { login, user, logout } = useAuth();
     let location = useLocation();
@@ -73,9 +73,9 @@ function Bootcamp() {
             .finally(() => {
                 setLoading(false);
             });
-    }, []);
+    }, [upload]);
     const handleChange = (event) => {
-       
+
         alert(event.target.value)
     };
     if (loading) {
@@ -118,9 +118,19 @@ function Bootcamp() {
                                 <div className="productTitleContainer">
 
                                     <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
+                                     <CardHeader
+  avatar={
+    <Avatar
+      alt={data?.recruiter?.userName}
+      src={data?.recruiter?.userPicture}
+    />
+  }
+  title={data?.recruiter?.userName}
+/>
+                                    
                                         <div> Unique ID : <span style={{ color: "green" }}>{data.id}</span></div>
                                         <div> Resource Type : <span style={{ color: "orange" }}>{data.applicantType}</span> </div>
-                                        <div> Recruiter  : <span style={{ color: "orange" }}></span> </div>
+                                        
                                     </Typography>
                                     <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
                                         <div style={{ margin: "4px" }}><AnimatedModal remarks={data.remarks}></AnimatedModal>                                        </div>
@@ -316,12 +326,12 @@ function Bootcamp() {
                                             <InputLabel id={`select-label-${data.resumeSource}`}>{data.resumeSource}</InputLabel>
                                             <Select
                                                 labelId={`select-label-${data.resumeSource}`}
-                                                id={`${data.resumeSource}`}                                                                                     
+                                                id={`${data.resumeSource}`}
                                                 label="Source"
                                                 onChange={handleChange}
                                             >
                                                 {sources.map((item) => (
-                                                   <MenuItem   value={item}>{item}</MenuItem>
+                                                    <MenuItem value={item}>{item}</MenuItem>
                                                 ))}
                                             </Select>
                                         </FormControl>
@@ -422,9 +432,9 @@ function Bootcamp() {
                                     <Grid item xs={12} sm={8}>
                                         <TextField
                                             required
-                                            id={data.name}
-                                            name={data.name}
-                                            label={data.name}
+                                            id={data.positionTitle}
+                                            name={data.positionTitle}
+                                            label={data.positionTitle}
                                             helperText
                                             fullWidth
                                             size="small"
@@ -468,16 +478,16 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
-                                    <FormControl fullWidth size="small">
+                                        <FormControl fullWidth size="small">
                                             <InputLabel id={`select-label-${data.visaStatus}`}>{data.visaStatus}</InputLabel>
                                             <Select
                                                 labelId={`select-label-${data.visaStatus}`}
-                                                id={`${data.visaStatus}`}                                                                                     
+                                                id={`${data.visaStatus}`}
                                                 label="Visa Status"
                                                 onChange={handleChange}
                                             >
                                                 {visaStatus.map((item) => (
-                                                   <MenuItem   value={item}>{item}</MenuItem>
+                                                    <MenuItem value={item}>{item}</MenuItem>
                                                 ))}
                                             </Select>
                                         </FormControl>
@@ -490,32 +500,18 @@ function Bootcamp() {
                                                 fontWeight: 700
                                             }}
                                         >
-                                            PayRate
+                                            Pay Rate
                                         </InputLabel>
                                     </Grid>
-                                    <Grid item xs={12} sm={1.5}>
-                                        <TextField
-                                            required
-                                            id={data.totalExp}
-                                            name={data.totalExp}
-                                            label={data.totalExp}
-                                            fullWidth
-                                            size="small"
-                                            autoComplete="off"
-                                            variant="outlined"
+                                    <Grid item xs={12} sm={3}>
+
+                                        <Input value={data.payRate}
+                                            startAdornment={<InputAdornment position="start">$</InputAdornment>}
                                         />
+
+
                                     </Grid>
-                                    <Grid item xs={12} sm={1.5}>
-                                        <InputLabel
-                                            sx={{
-                                                display: "flex",
-                                                justifyContent: "center",
-                                                fontWeight: 700
-                                            }}
-                                        >
-                                            USD
-                                        </InputLabel>
-                                    </Grid>
+
                                     <Grid item xs={12} sm={2}>
                                         <InputLabel
                                             sx={{
@@ -555,18 +551,18 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
-                                  
+
 
                                         <FormControl fullWidth size="small">
                                             <InputLabel id={`select-label-${data.candidateEmploymentType}`}>{data.candidateEmploymentType}</InputLabel>
                                             <Select
                                                 labelId={`select-label-${data.candidateEmploymentType}`}
-                                                id={`${data.candidateEmploymentType}`}                                                                                     
+                                                id={`${data.candidateEmploymentType}`}
                                                 label="Employement Type"
                                                 onChange={handleChange}
                                             >
                                                 {empType.map((item) => (
-                                                   <MenuItem   value={item}>{item}</MenuItem>
+                                                    <MenuItem value={item}>{item}</MenuItem>
                                                 ))}
                                             </Select>
                                         </FormControl>
