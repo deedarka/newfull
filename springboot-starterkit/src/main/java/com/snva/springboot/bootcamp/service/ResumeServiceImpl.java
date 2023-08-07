@@ -7,10 +7,14 @@ import com.snva.springboot.bootcamp.controller.v1.response.ml.api.Data;
 import com.snva.springboot.bootcamp.controller.v1.response.ml.api.ResumeParsingResponse;
 import com.snva.springboot.bootcamp.dto.mapper.recruitment.ApplicantMapper;
 import com.snva.springboot.bootcamp.dto.model.recruitment.ApplicantDto;
+import com.snva.springboot.bootcamp.dto.model.recruitment.Recruiter;
+import com.snva.springboot.bootcamp.dto.model.user.RoleDto;
+import com.snva.springboot.bootcamp.dto.model.user.UserDto;
 import com.snva.springboot.bootcamp.exception.EntityType;
 import com.snva.springboot.bootcamp.exception.ExceptionType;
 import com.snva.springboot.bootcamp.exception.LearnerDromeException;
 import com.snva.springboot.bootcamp.model.recruitment.Applicant;
+import com.snva.springboot.bootcamp.model.user.UserRoles;
 import com.snva.springboot.bootcamp.repository.recruitment.ApplicantRepository;
 import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
@@ -42,6 +46,10 @@ public class ResumeServiceImpl implements  IResumeParsingService {
     private ModelMapper mapper;
     @Autowired
     private ApplicantRepository applicantRepository;
+
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public ResumeParsingResponse getResumeParsed(Resource file) throws JsonProcessingException {
@@ -125,8 +133,16 @@ public class ResumeServiceImpl implements  IResumeParsingService {
     @Override
     public ApplicantDto applicantById(String id) {
         Optional<Applicant> applicant= applicantRepository.findById(id);
-        if (applicant.isPresent() ){
-            return ApplicantMapper.toApplicantDto(applicant.get());
+
+        if (applicant.isPresent() ) {
+            UserDto userDto = userService.findUserById(applicant.get().getRecruiterId());
+            ApplicantDto applicantDto = ApplicantMapper.toApplicantDto(applicant.get());
+            String stringOfRoles = "";
+            for (RoleDto role : userDto.getRoles()) {
+                stringOfRoles += "|" + stringOfRoles;
+            }
+            applicantDto.setRecruiter(new Recruiter().setUserId(userDto.getId()).setUserName(userDto.getFullName()).setUserPicture(userDto.getProfilePicture()).setUserRole(stringOfRoles));
+            return applicantDto;
         }
         throw exception(STOP, ENTITY_NOT_FOUND, id);
     }
@@ -136,7 +152,8 @@ public class ResumeServiceImpl implements  IResumeParsingService {
         Optional<Applicant> applicant= applicantRepository.findById(editApplicantRequest.getId());
         if (applicant.isPresent() ){
             Applicant applicantToSave = ApplicantMapper.fromEditApplicanntRequestTpApplicant(editApplicantRequest);
-            //applicantToSave.setId(applicant.get().getId());
+
+
             applicantToSave.setMarkStatus("farmed");
             return ApplicantMapper.toApplicantDto(applicantRepository.save(applicantToSave));
         }

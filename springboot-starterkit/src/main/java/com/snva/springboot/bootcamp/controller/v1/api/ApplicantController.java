@@ -90,13 +90,15 @@ public class ApplicantController {
             ResumeParsingResponse resumeParsingResponse = resumeParsingService.getResumeParsed(fileStorageService.loadFileAsResource(fileName));
             ApplicantDto applicantDto = getApplicantDto(fileDownloadUri, resumeParsingResponse);
             applicantDto.setApplicantType(applicantType);
-            applicantDto = resumeParsingService.addApplicant(applicantDto);
-            res = new UploadFileResponse(fileName, fileDownloadUri, file.getContentType(), file.getSize(), "", applicantDto);
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             Collection<? extends GrantedAuthority> list= authentication.getAuthorities();
             String user=(String)authentication.getPrincipal();
             UserDto userDto= new UserDto();
             userDto=  userService.findUserByEmail(user);
+            applicantDto.setRecruiterId(userDto.getId());
+            applicantDto = resumeParsingService.addApplicant(applicantDto);
+            res = new UploadFileResponse(fileName, fileDownloadUri, file.getContentType(), file.getSize(), "", applicantDto);
+
 
             EmailUtil.sendEmail( getSession(),userDto.getEmail()+", abhishek.joshi@snva.com, akshay.midha@snva.com","Applicant Namely "+ applicantDto.getName() ==""?"Un Named":applicantDto.getName()
                     +" Imported !", HtmlTable.fromJson(new Gson().toJson( res)));
@@ -263,7 +265,7 @@ public class ApplicantController {
     private Session getSession() {
         
         final String fromEmail = "dheeraj.singh@snva.com"; //requires valid gmail id
-        final String password = "dheerajthedev@11111111111111111111"; // correct password for gmail id
+        final String password = "dheerajthedev@8991"; // correct password for gmail id
 
         System.out.println("TLSEmail Start");
         Properties props = new Properties();

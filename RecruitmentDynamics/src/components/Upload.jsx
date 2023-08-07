@@ -1,9 +1,9 @@
 import { useState, useRef } from "react";
 import { baseurl } from "../Urlinclude.js";
+import { useNavigate } from "react-router-dom";
 
-const UploadResume = ({ profile }) => {
+const UploadResume = ({ profile,setUpload }) => {
     const profileJson = JSON.parse(profile);
-
     const jwtToken = profileJson.response;
     const roles = profileJson.user.roles.map(role => role.role);
 
@@ -42,7 +42,6 @@ const UploadResume = ({ profile }) => {
         const resJson = await Promise.all(responses.map(res => res.json()));
 
         console.log(resJson);
-
         setParsedResumes(resJson);
         setIsUploading(false);
     }
