@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
+import { Avatar, Box, Button, Card, CardHeader, FormControl, Grid, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import LoadingSpinner from './LoadingSpinner';
 const useStyles = makeStyles(theme => ({
@@ -19,9 +19,9 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(2, 4, 3),
     },
 }));
-export default function AnimatedModal(props) {
+export default function AnimatedModal({ remarks, recruiter }) {
     const classes = useStyles();
-    const [data, setData] = useState(props.remarks)
+    const [data, setData] = useState(remarks)
     const [open, setOpen] = React.useState(false);
     console.log(data)
     const handleOpen = () => {
@@ -55,32 +55,23 @@ export default function AnimatedModal(props) {
                     <div className={classes.paper}>
                         <h2>Add Recuriter/Manager Remarks </h2>
                         <Paper elevation={3} sx={{ margin: "3%", padding: "5%" }}>
-                            <Box sx={{ padding: "5%" }}></Box>
+                            <Box sx={{ padding: "0%" }}></Box>
                             <Grid  >
-                                <Grid item xs={12} sm={2}>
-                                    <InputLabel
-                                        sx={{
-                                            display: "flex",
-                                            justifyContent: "start",
-                                            fontWeight: 700
-                                        }}
-                                    >
-                                        Recruiter Id
-                                    </InputLabel>
-                                </Grid>
-                                <Grid item xs={12} sm={10}>
-                                    <TextField
-                                        required
-                                        id={data.userId}
-                                        name={data.userId}
-                                        label={data.userId}
-                                        helperText
-                                        fullWidth
-                                        size="small"
-                                        autoComplete="off"
-                                        variant="outlined"
+                                <Grid item xs={12} sm={12}>
+                                    <CardHeader
+                                        helperText                                       
+                                        
+                                        avatar={
+                                            <Avatar
+                                            sx={{ width: 100, height: 100 }}
+                                                alt={recruiter?.userName}
+                                                src={recruiter?.userPicture}
+                                            />
+                                        }
+                                        title={recruiter?.userName}
                                     />
                                 </Grid>
+
                                 <Grid item xs={12} sm={2}>
                                     <InputLabel
                                         sx={{
@@ -100,41 +91,22 @@ export default function AnimatedModal(props) {
                                         label={data.userId}
                                         helperText
                                         fullWidth
+                                        rows={3}
+                                        multiline
                                         size="small"
                                         autoComplete="off"
                                         variant="outlined"
                                     />
                                 </Grid>
-                                <Grid item xs={12} sm={2}>
-                                    <InputLabel
-                                        sx={{
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            fontWeight: 700
-                                        }}
-                                    >
-                                        Remark Added Date
-                                    </InputLabel>
-                                </Grid>
-                                <Grid item xs={12} sm={10}>
-                                    <TextField
-                                        required
-                                        id={data.userId}
-                                        name={data.userId}
-                                        label={data.userId}
-                                        helperText
-                                        fullWidth
-                                        size="small"
-                                        autoComplete="off"
-                                        variant="outlined"
-                                    />
-                                </Grid>
+
                                 <Grid item xs={12} sm={12}>
                                     <Button sx={{
                                         display: "flex",
                                         justifyContent: "center",
                                         fontWeight: 700
-                                    }} variant="contained">Contained</Button>
+                                    }} fullWidth
+                                        size="small"
+                                        variant="contained">Add Remark</Button>
                                 </Grid>
                             </Grid>
                         </Paper>
@@ -158,13 +130,8 @@ export default function AnimatedModal(props) {
                                                 <td> {data.dateModified}</td>   <button>Edit</button>     </tr>
                                         )
                                     })}
-
                                 </tbody>
                             </table>
-
-
-
-
                         </div>
                     </div>
                 </Fade>
