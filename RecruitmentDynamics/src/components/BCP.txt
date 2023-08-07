@@ -1,133 +1,15 @@
-import { Link } from "react-router-dom";
-import FileViewer from 'react-file-viewer';
-import CommentIcon from '@mui/icons-material/Comment';
-import '../css/page/product.css'
-import Chart from './Chart';
-import { productData } from "../dummyData";
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
-import AnimatedModal from "./RemarksModal";
-import SubmissionModel from "./SubmissionModel";
-
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    useLocation
-} from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
-import React, { useEffect, useState } from "react";
-import LoadingSpinner from "./LoadingSpinner";
-import { Box, Button, Checkbox, FormControl, Grid, IconButton, Input, InputLabel, List, ListItem, ListItemButton, ListItemIcon, ListItemText, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
-import { CheckBox, Label, LabelImportant } from "@material-ui/icons";
-import CustomList from "./CustomList";
-import ChipsArray from "./GenericChips";
-function Bootcamp() {
-
-    const [checked, setChecked] = React.useState([0]);
-    const { login, user, logout } = useAuth();
-    let location = useLocation();
-    let urlParts = location.pathname.split('/');
-    const applicant = urlParts[urlParts.length - 1]
-    const [loading, setLoading] = useState(false);
-    const [farmApplicant, setFarmApplicant] = useState({});
-    const [data, setData] = useState({})
-    const [url, setUrl] = useState("")
-    const [date, setDate] = useState(new Date());
-
-    const handleToggle = (value) => () => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-
-        if (currentIndex === -1) {
-            newChecked.push(value);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-
-        setChecked(newChecked);
-    };
-
-    useEffect(() => {
-        setLoading(true);
-
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${user.response}`);
-
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: applicant,
-            redirect: 'follow'
-        };
-
-        fetch("http://localhost:8077/api/v1/applicant/applicantById", requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                setData(result)
-                console.log("AAAAA", result)
-                setUrl(result.resumeLinks[0])
-                setLoading(false);
-            })
-            .catch(error => console.log('error', error))
-            .finally(() => {
-                setLoading(false);
-            });
-    }, []);
-    const handleChange = (event) => {
-       
-        alert(event.target.value)
-    };
-    if (loading) {
-        return <div className="productList"> <LoadingSpinner /></div>;
-    }
-
-
-
-
-    const sources = [
-        "Dice",
-        "Linkedin",
-        "Monster",
-        "Others",
-    ];
-    const visaStatus = [
-        "GC-EAD",
-        "GC",
-        "Citizen",
-        "Others",
-    ];
-    const empType = [
-        "W2",
-        "c2c",
-        "Corp",
-        "Others",
-    ];
-    return (
-        <div className="product" style={{ marginLeft: "12%" }}>
-
-            <div className="productTitleContainer">
-                <h1 className="productTitle">Candiate Detailed Information</h1>
-
-            </div>
-            <div className="productTop">
-                <div className="productTopLeft">
-                    <React.Fragment>
-                        <Paper elevation={3} sx={{ marginTop: "3%", marginRight: "1%", marginLeft: "1%" }}>
+     <Paper elevation={3} sx={{ marginTop: "3%", marginRight: "1%", marginLeft: "1%" }}>
                             <Box sx={{ padding: 5 }}>
                                 <div className="productTitleContainer">
-
+                               
                                     <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
-                                        <div> Unique ID : <span style={{ color: "green" }}>{data.id}</span></div>
-                                        <div> Resource Type : <span style={{ color: "orange" }}>{data.applicantType}</span> </div>
-                                        <div> Recruiter  : <span style={{ color: "orange" }}></span> </div>
+                                        <div> Unique ID : <span style={{color:"green"}}>{data.id}</span></div>
+                                        <div> Resource Type : <span style={{color:"orange"}}>{data.applicantType}</span> </div>
+                                        <div> Recruiter  : <span style={{color:"orange"}}></span> </div>
                                     </Typography>
-                                    <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
-                                        <div style={{ margin: "4px" }}><AnimatedModal remarks={data.remarks}></AnimatedModal>                                        </div>
-                                        <div style={{ margin: "4px" }}><SubmissionModel remarks={data.remarks}></SubmissionModel>                                        </div>
-                                        <div style={{ margin: "4px" }}><Button style={{ width: "200px" }} color="secondary" variant="contained" >
-                                            Edit
-                                        </Button>          </div>
+                                    <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>                                        
+                                    <div style={{margin:"4px"}}><AnimatedModal remarks={data.remarks}></AnimatedModal>                                        </div>
+                                    <div style={{margin:"4px"}}><SubmissionModel remarks={data.remarks}></SubmissionModel>                                        </div>
                                     </Typography>
                                 </div>
                                 <Grid container spacing={3}>
@@ -243,8 +125,8 @@ function Bootcamp() {
                                     </Grid>
                                     <Grid item xs={12} sm={10}>
 
-                                        <ChipsArray type="designation" items={data.designation}></ChipsArray>
-                                        {/* <CustomList  height={400}
+                                    <ChipsArray type="designation" items={ data.designation}></ChipsArray> 
+                                    {/* <CustomList  height={400}
                                             width={360}
                                             itemSize={46}
                                             itemCount={200}
@@ -268,12 +150,12 @@ function Bootcamp() {
                                                 fontWeight: 700
                                             }}
                                         >
-                                            Degrees
+                                            Degree
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={10}>
-                                        <ChipsArray type="degree" items={data.degree}></ChipsArray>
-
+                                    <ChipsArray type="degree" items={ data.degree}></ChipsArray>
+                                  
                                     </Grid>
                                     <Grid item xs={12} sm={2}>
                                         <InputLabel
@@ -287,8 +169,7 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={10}>
-                                        <ChipsArray type="skills" items={data.skills}></ChipsArray>
-
+                                    <ChipsArray  type="skills" items={ data.skills}></ChipsArray>
                                         {/* <TextField
                                             id={data.skills}
                                             name={data.skills}
@@ -311,21 +192,16 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
-
-                                        <FormControl fullWidth size="small">
-                                            <InputLabel id={`select-label-${data.resumeSource}`}>{data.resumeSource}</InputLabel>
-                                            <Select
-                                                labelId={`select-label-${data.resumeSource}`}
-                                                id={`${data.resumeSource}`}                                                                                     
-                                                label="Source"
-                                                onChange={handleChange}
-                                            >
-                                                {sources.map((item) => (
-                                                   <MenuItem   value={item}>{item}</MenuItem>
-                                                ))}
-                                            </Select>
-                                        </FormControl>
-
+                                    <InputLabel
+                                            sx={{
+                                                display: "flex",
+                                                justifyContent: "start",
+                                                fontWeight: 700
+                                            }}
+                                            
+                                        >{data.resumeSource}</InputLabel>
+                                            
+                                        
                                     </Grid>
                                     <Grid item xs={12} sm={2}>
                                         <InputLabel
@@ -363,13 +239,11 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={8}>
-
-
-                                        <DatePicker sx={{
-                                            display: "flex",
-                                            justifyContent: "start",
-                                            fontWeight: 900
-                                        }} selected={date} onChange={(date) => setDate(date)} />
+                                        <DatePicker  sx={{
+                                                display: "flex",
+                                                justifyContent: "start",
+                                                fontWeight: 700
+                                            }} selected={date} onChange={(date) => setDate(date)} />
 
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
@@ -384,11 +258,11 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={8}>
-                                        <DatePicker sx={{
-                                            display: "flex",
-                                            justifyContent: "start",
-                                            fontWeight: 700
-                                        }} selected={date} onChange={(date) => setDate(date)} />
+                                    <DatePicker  sx={{
+                                                display: "flex",
+                                                justifyContent: "start",
+                                                fontWeight: 700
+                                            }} selected={date} onChange={(date) => setDate(date)} />
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
                                         <InputLabel
@@ -402,11 +276,11 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={8}>
-                                        <DatePicker sx={{
-                                            display: "flex",
-                                            justifyContent: "start",
-                                            fontWeight: 700
-                                        }} selected={date} onChange={(date) => setDate(date)} />
+                                    <DatePicker  sx={{
+                                                display: "flex",
+                                                justifyContent: "start",
+                                                fontWeight: 700
+                                            }} selected={date} onChange={(date) => setDate(date)} />
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
                                         <InputLabel
@@ -468,16 +342,17 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
-                                    <FormControl fullWidth size="small">
-                                            <InputLabel id={`select-label-${data.visaStatus}`}>{data.visaStatus}</InputLabel>
+                                        <FormControl fullWidth size="small">
+                                            <InputLabel id="demo-simple-select-label">{data.visaStatus}</InputLabel>
                                             <Select
-                                                labelId={`select-label-${data.visaStatus}`}
-                                                id={`${data.visaStatus}`}                                                                                     
-                                                label="Visa Status"
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                value={data.visaStatus}
+                                                label="Source"
                                                 onChange={handleChange}
                                             >
                                                 {visaStatus.map((item) => (
-                                                   <MenuItem   value={item}>{item}</MenuItem>
+                                                    <MenuItem value={item}>{item}</MenuItem>
                                                 ))}
                                             </Select>
                                         </FormControl>
@@ -526,11 +401,9 @@ function Bootcamp() {
                                         >
                                             Tags
                                         </InputLabel>
-
-
                                     </Grid>
                                     <Grid item xs={12} sm={10}>
-                                        <ChipsArray type="tags" items={data.tags}></ChipsArray>
+                                    <ChipsArray  type="tags" items={ data.tags}></ChipsArray>
                                         {/* <TextField
                                             id={data.tags}
                                             name={data.tags}
@@ -555,23 +428,22 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
-                                  
-
                                         <FormControl fullWidth size="small">
-                                            <InputLabel id={`select-label-${data.candidateEmploymentType}`}>{data.candidateEmploymentType}</InputLabel>
+                                            <InputLabel id="demo-simple-select-label">{data.resumeSource}</InputLabel>
                                             <Select
-                                                labelId={`select-label-${data.candidateEmploymentType}`}
-                                                id={`${data.candidateEmploymentType}`}                                                                                     
-                                                label="Employement Type"
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                value={data.resumeSource}
+                                                label="Source"
                                                 onChange={handleChange}
                                             >
-                                                {empType.map((item) => (
-                                                   <MenuItem   value={item}>{item}</MenuItem>
+                                                {sources.map((item) => (
+                                                    <MenuItem value={item}>{item}</MenuItem>
                                                 ))}
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} sm={3}>
+                                    <Grid item xs={12} sm={2}>
                                         <InputLabel
                                             sx={{
                                                 display: "flex",
@@ -579,15 +451,15 @@ function Bootcamp() {
                                                 fontWeight: 700
                                             }}
                                         >
-                                            Willing Relocate
+                                            W. Relocate
                                         </InputLabel>
                                     </Grid>
-                                    <Grid item xs={12} sm={3}>
+                                    <Grid item xs={12} sm={4}>
                                         <CheckBox
                                             required
-                                            id={data.willingRelocation}
-                                            name={data.willingRelocation}
-                                            label={data.willingRelocation}
+                                            id={data.totalExp}
+                                            name={data.totalExp}
+                                            label={data.totalExp}                                            
                                             autoComplete="off"
                                             variant="outlined"
                                         />
@@ -604,21 +476,3 @@ function Bootcamp() {
                                 </Grid>
                             </Box>
                         </Paper>
-                    </React.Fragment>
-                </div>
-                <div className="productTopRight">
-                    {
-                        url.includes(".doc") ?
-                            <FileViewer
-                                fileType={'docx'}
-                                filePath={url}
-                            />
-                            : <iframe src={url} width='100%' height='100%' frameborder='0'>
-                            </iframe>
-                    }
-                </div>
-            </div>
-        </div>
-    );
-}
-export default Bootcamp;
