@@ -133,7 +133,7 @@ function Bootcamp() {
                                         
                                     </Typography>
                                     <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
-                                        <div style={{ margin: "4px" }}><AnimatedModal remarks={data.remarks}></AnimatedModal>                                        </div>
+                                        <div style={{ margin: "4px" }}><AnimatedModal remarks={data.remarks} recruiter={data.recruiter} ></AnimatedModal>                                        </div>
                                         <div style={{ margin: "4px" }}><SubmissionModel remarks={data.remarks}></SubmissionModel>                                        </div>
                                         <div style={{ margin: "4px" }}><Button style={{ width: "200px" }} color="secondary" variant="contained" >
                                             Edit
@@ -225,8 +225,8 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={10}>
-
-                                        <CustomList items={data.university}></CustomList>
+                                    <ChipsArray type="university" items={data.university}></ChipsArray>
+                                  
 
                                         {/* <TextField
                                             required
