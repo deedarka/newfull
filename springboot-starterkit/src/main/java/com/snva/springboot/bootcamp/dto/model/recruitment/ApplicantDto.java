@@ -1,5 +1,6 @@
 package com.snva.springboot.bootcamp.dto.model.recruitment;
 
+import com.snva.springboot.bootcamp.dto.model.user.UserDto;
 import com.snva.springboot.bootcamp.model.recruitment.Remark;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,7 +34,6 @@ public class ApplicantDto {
     private String candidateLocation;
     private String visaStatus;
     private float payRate;
-    private  Recruiter recruiter;
     private String candidateEmploymentType;
     private String submissionStatus;
     private String applicantType;

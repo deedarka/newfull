@@ -5,7 +5,7 @@ import { productRows } from "../dummyData";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LoadingSpinner from '../components/LoadingSpinner';
-import { Typography } from '@mui/material';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import UploadResume from '../components/Upload';
 import { useAuth } from "../hooks/useAuth";
 function BootcampList() {
@@ -74,20 +74,16 @@ function BootcampList() {
   }
 
 console.log("TTTTT"+ JSON.stringify(user))
-  // const [data, setData] = useState(productRows);
 
-  // const handleDelete = (id) => {
-  //   setData(data.filter((item) => item.id !== id));
-  // };
 
   user.applicantType="bench"
   return (
-    <div className="applicantList">
-      <div className="productTitleContainer">
-        <h1 className="productTitle">All Bootcamp Applicants</h1>
+    <Container maxWidth="100%" flex>
+    <Grid  >
+        <h1 >All Bootcamp Applicants</h1>
         
-      </div>
-      <Typography gutterBottom sx={{ paddingBottom: 5 }}>
+        </Grid>
+      <Typography >
 
         <button variant="h6" style={{margin:"10px"}} className="productTitle applicantsAll"  sx={{ padding: 5 }} >All</button>
         <button variant="h6" style={{margin:"10px"}} className="productTitle applicantsByFarmed"  sx={{ padding: 5 }} >Farmed</button>
@@ -96,7 +92,8 @@ console.log("TTTTT"+ JSON.stringify(user))
       
       </Typography>
 
-      <DataGrid
+      <DataGrid 
+      fullwidth
         rows={data}
         disableSelectionOnClick
         columns={columns}   
@@ -111,7 +108,9 @@ console.log("TTTTT"+ JSON.stringify(user))
           },
         }}
       />
-    </div>
+ 
+
+    </Container>
   );
 }
 

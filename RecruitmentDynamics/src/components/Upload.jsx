@@ -1,12 +1,16 @@
 import { useState, useRef } from "react";
 import { baseurl } from "../Urlinclude.js";
 import { useNavigate } from "react-router-dom";
+import { Alert, BottomNavigation, BottomNavigationAction, Snackbar } from "@mui/material";
+import LoadingSpinner from "./LoadingSpinner.jsx";
 
+import CloudSyncTwoToneIcon from '@mui/icons-material/CloudSyncTwoTone';
 const UploadResume = ({ profile,setUpload }) => {
     const profileJson = JSON.parse(profile);
     const jwtToken = profileJson.response;
     const roles = profileJson.user.roles.map(role => role.role);
-
+    const [value, setValue] = useState(0);
+    const navigate = useNavigate();
     const hasAccess = roles.some(role => {
         return ["RECRUITER", "SRRECRUITER", "RECRUITERADMIN"].includes(role)
     });
@@ -86,15 +90,27 @@ const UploadResume = ({ profile,setUpload }) => {
     if (isUploading) {
         return <>
             <div >
-                <h1>
-                    Uploading please wait ...
-                </h1>
+                <LoadingSpinner></LoadingSpinner>
             </div>
         </>
     }
-
+    function handleClick(){
+        navigate(0)
+    }
     return <>
         <div >
+        <BottomNavigation 
+  showLabels
+  value={value}
+  onChange={(event, newValue) => {
+    setValue(newValue);
+  }}
+>
+  <BottomNavigationAction onClick={handleClick}  label="Refresh"  icon={<CloudSyncTwoToneIcon />} >
+  
+  </BottomNavigationAction>
+  
+</BottomNavigation>
             <div>
                 <div
                     style={{
@@ -147,6 +163,14 @@ const UploadResume = ({ profile,setUpload }) => {
                                     padding: '5px'
                                 }}
                             >
+                                <Snackbar anchorOrigin={ { vertical: 'top', horizontal: 'right' }}
+                                    open={true}                                                                     
+                                    key={resume.fileName}>
+                                        <Alert  severity="success" sx={{ width: '100%' }}>
+                                            The profile {resume.fileName} uploaded now you can farmed it!
+                                        </Alert>
+                                    </Snackbar>
+
                                 <h3>
                                     {resume.fileName}
                                 </h3>                            

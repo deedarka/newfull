@@ -39,6 +39,7 @@ const getUserData = () =>
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
+    
     <Route
       element={<AuthLayout />}
       loader={() => defer({ userPromise: getUserData() })}
@@ -48,7 +49,7 @@ export const router = createBrowserRouter(
         <Route path="/login" element={<LoginPage />} />
       </Route>
 
-      <Route path="/dashboard" element={<ProtectedLayout />}>
+      <Route path="dashboard" element={<ProtectedLayout />}>
         <Route path="applicantsbc" element={<BootcampListPage />} />
         <Route path="applicantstp" element={<BootcampList3pPage />} />
         <Route path="profile" element={<ProfilePage />} />

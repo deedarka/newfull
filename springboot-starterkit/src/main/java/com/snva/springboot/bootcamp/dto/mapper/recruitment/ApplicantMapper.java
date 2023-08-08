@@ -3,8 +3,10 @@ package com.snva.springboot.bootcamp.dto.mapper.recruitment;
 import com.snva.springboot.bootcamp.controller.v1.request.recruitment.EditApplicantRequest;
 import com.snva.springboot.bootcamp.dto.mapper.SessionMapper;
 import com.snva.springboot.bootcamp.dto.mapper.TechnologyStackMapper;
+import com.snva.springboot.bootcamp.dto.mapper.UserMapper;
 import com.snva.springboot.bootcamp.dto.model.bootcamp.BootcampDto;
 import com.snva.springboot.bootcamp.dto.model.recruitment.ApplicantDto;
+import com.snva.springboot.bootcamp.dto.model.user.UserDto;
 import com.snva.springboot.bootcamp.model.bootcamp.Bootcamp;
 import com.snva.springboot.bootcamp.model.recruitment.Applicant;
 import com.snva.springboot.bootcamp.model.recruitment.Remark;
@@ -83,13 +85,13 @@ public class ApplicantMapper {
                 .setRemarks(applicant.getRemarks());
     }
 
-    public static Applicant fromEditApplicanntRequestTpApplicant(EditApplicantRequest editApplicantRequest) {
+    public static Applicant fromEditApplicanntRequestTpApplicant(EditApplicantRequest editApplicantRequest, UserDto userDto) {
 
         List<Remark> remarks = new ArrayList<Remark>();
         List<com.snva.springboot.bootcamp.controller.v1.request.recruitment.Remark> remarkList = editApplicantRequest.getRemarks();
         remarkList.forEach(x ->
                 {
-                    remarks.add(new Remark().setRemark(x.getRemark()).setDateCreated(new Date()).setDateModified(new Date()).setUserId(""));
+                    remarks.add(new Remark().setRemark(x.getRemark()).setDateCreated(new Date()).setDateModified(new Date()).setUser(UserMapper.toUser(userDto)));
                 }
         );
         return new Applicant()

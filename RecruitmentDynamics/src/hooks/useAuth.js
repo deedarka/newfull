@@ -35,13 +35,14 @@ export const AuthProvider = ({ children }) => {
       .then(result => {
         if(result.status!=='success'){
           setUser(null);
-          navigate("/", { replace: true });
-        }
+          navigate("/login", { replace: true });
+        }else{
         setUser(result);
         console.log("The User Log "+user)}
+      }
       )
       .catch(error => console.log('error', error));
-    navigate("/dashboard/profile", { replace: true });
+      navigate("/dashboard/profile", { replace: true });
   };
 
   const logout = () => {

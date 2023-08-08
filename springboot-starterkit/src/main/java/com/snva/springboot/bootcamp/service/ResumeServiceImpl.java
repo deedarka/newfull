@@ -33,7 +33,9 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.snva.springboot.bootcamp.exception.EntityType.APPLINCANT;
 import static com.snva.springboot.bootcamp.exception.EntityType.STOP;
+import static com.snva.springboot.bootcamp.exception.ExceptionType.DUPLICATE_ENTITY;
 import static com.snva.springboot.bootcamp.exception.ExceptionType.ENTITY_NOT_FOUND;
 
 
@@ -71,7 +73,16 @@ public class ResumeServiceImpl implements  IResumeParsingService {
         List<String> resumeLinkList=new ArrayList<>();
         Optional<Applicant> applicantExist = applicantRepository.findByPhone(applicantDto.getPhone());
         if (applicantExist.isPresent()){
-          applicant=  applicantExist.get();
+            applicant=  applicantExist.get();
+            if(Comparator.comparing(Applicant::getApplicantType)
+                    .thenComparing(Applicant::getPhone)
+                    .thenComparing(Applicant::getName)
+                    .thenComparingInt(Applicant::getTotalExp)
+                    .thenComparing(Applicant::getEmail).compare(ApplicantMapper.toApplicant(applicantDto),applicant)==0){
+
+                            throw exception(APPLINCANT, DUPLICATE_ENTITY, applicantDto.getId());
+            }
+
             if (applicant.getPhone()==null || applicant.getPhone().contains("na")|| applicant.getPhone().contains("")){
                 applicant.setPhone(
                         applicantDto.getPhone() == null ? "NA" : applicantDto.getPhone() == "" ? "NA" : applicantDto.getPhone()
@@ -141,23 +152,23 @@ public class ResumeServiceImpl implements  IResumeParsingService {
             for (RoleDto role : userDto.getRoles()) {
                 stringOfRoles += "|" + stringOfRoles;
             }
-            applicantDto.setRecruiter(new Recruiter().setUserId(userDto.getId()).setUserName(userDto.getFullName()).setUserPicture(userDto.getProfilePicture()).setUserRole(stringOfRoles));
+            applicantDto.setRecruiterId(userDto.getId());
             return applicantDto;
         }
-        throw exception(STOP, ENTITY_NOT_FOUND, id);
+        throw exception(APPLINCANT, ENTITY_NOT_FOUND, id);
     }
 
     @Override
-    public ApplicantDto updateApplicant(EditApplicantRequest editApplicantRequest) {
+    public ApplicantDto updateApplicant(EditApplicantRequest editApplicantRequest, UserDto userDto) {
         Optional<Applicant> applicant= applicantRepository.findById(editApplicantRequest.getId());
         if (applicant.isPresent() ){
-            Applicant applicantToSave = ApplicantMapper.fromEditApplicanntRequestTpApplicant(editApplicantRequest);
+            Applicant applicantToSave = ApplicantMapper.fromEditApplicanntRequestTpApplicant(editApplicantRequest,userDto);
 
 
             applicantToSave.setMarkStatus("farmed");
             return ApplicantMapper.toApplicantDto(applicantRepository.save(applicantToSave));
         }
-        throw exception(STOP, ENTITY_NOT_FOUND, editApplicantRequest.getId());
+        throw exception(APPLINCANT, ENTITY_NOT_FOUND, editApplicantRequest.getId());
     }
 
     @Override
