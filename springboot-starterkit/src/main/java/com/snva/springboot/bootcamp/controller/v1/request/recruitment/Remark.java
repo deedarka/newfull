@@ -25,11 +25,9 @@ public class Remark{
         @NotEmpty(message = "{constraints.NotEmpty.message}")
         private String Remark;
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-        @NotNull(message = "{constraints.NotEmpty.message}")
         @Temporal(TemporalType.DATE)
         private Date dateCreated;
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-        @NotNull(message = "{constraints.NotEmpty.message}")
         @Temporal(TemporalType.DATE)
         private  Date dateModified;
 }

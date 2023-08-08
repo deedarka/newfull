@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.snva.springboot.bootcamp.controller.v1.request.recruitment.EditApplicantRequest;
 import com.snva.springboot.bootcamp.controller.v1.response.ml.api.ResumeParsingResponse;
 import com.snva.springboot.bootcamp.dto.model.recruitment.ApplicantDto;
+import com.snva.springboot.bootcamp.dto.model.user.UserDto;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,8 +21,7 @@ public interface IResumeParsingService {
 
     ApplicantDto applicantById(String id);
 
-    ApplicantDto updateApplicant(EditApplicantRequest editApplicantRequest);
-
+    ApplicantDto updateApplicant(EditApplicantRequest editApplicantRequest, UserDto userDto);
     List<ApplicantDto> allBenchApplicants();
 
     List<ApplicantDto> all3RdPartyApplicants();

@@ -186,8 +186,8 @@ public class ApplicantController {
         String user=(String)authentication.getPrincipal();
         UserDto userDto= new UserDto();
         userDto=  userService.findUserByEmail(user);
-        ApplicantDto applicantDto= resumeParsingService.updateApplicant(editApplicantRequest);
-        EmailUtil.sendEmail( getSession(),userDto.getEmail()+", abhishek.joshi@snva.com, akshay.midha@snva.com","Applicant Namely "+ applicantDto.getName() ==""?"Un Named":applicantDto.getName()
+        ApplicantDto applicantDto= resumeParsingService.updateApplicant(editApplicantRequest,userDto);
+        EmailUtil.sendEmail( getSession(),userDto.getEmail()+", akshay.midha@snva.com","Applicant Namely "+ applicantDto.getName() ==""?"Un Named":applicantDto.getName()
                 +" Imported !", HtmlTable.fromJson(new Gson().toJson( applicantDto)));
         return ResponseEntity.ok(applicantDto);
     }
@@ -265,7 +265,7 @@ public class ApplicantController {
     private Session getSession() {
         
         final String fromEmail = "dheeraj.singh@snva.com"; //requires valid gmail id
-        final String password = "dheerajthedev@8991"; // correct password for gmail id
+        final String password = "dheerajthedev@-----------------"; // correct password for gmail id
 
         System.out.println("TLSEmail Start");
         Properties props = new Properties();

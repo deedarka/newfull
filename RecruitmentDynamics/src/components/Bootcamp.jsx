@@ -22,9 +22,12 @@ import { Avatar, Box, Button, CardHeader, Checkbox, FormControl, Grid, IconButto
 import { CheckBox, Label, LabelImportant } from "@material-ui/icons";
 import CustomList from "./CustomList";
 import ChipsArray from "./GenericChips";
+
 function Bootcamp() {
+
+
     const [upload, setUpload] = React.useState(false);
-    const [checked, setChecked] = React.useState([0]);
+    const [checked, setChecked] = React.useState([0]);    
     const { login, user, logout } = useAuth();
     let location = useLocation();
     let urlParts = location.pathname.split('/');
@@ -33,6 +36,9 @@ function Bootcamp() {
     const [farmApplicant, setFarmApplicant] = useState({});
     const [data, setData] = useState({})
     const [url, setUrl] = useState("")
+    const [submissionDate, setSubmissionDate] = useState({});
+    const [positionReceivingDate, setPositionReceivingDate] = useState({});
+    const [dateOfContact, setDateOfContact] = useState({});
     const [date, setDate] = useState(new Date());
 
     const handleToggle = (value) => () => {
@@ -104,7 +110,7 @@ function Bootcamp() {
         "Others",
     ];
     return (
-        <div className="product" style={{ marginLeft: "12%" }}>
+        <div className="product" >
 
             <div className="productTitleContainer">
                 <h1 className="productTitle">Candiate Detailed Information</h1>
@@ -118,19 +124,19 @@ function Bootcamp() {
                                 <div className="productTitleContainer">
 
                                     <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
-                                     <CardHeader
-  avatar={
-    <Avatar
-      alt={data?.recruiter?.userName}
-      src={data?.recruiter?.userPicture}
-    />
-  }
-  title={data?.recruiter?.userName}
-/>
-                                    
+                                        <CardHeader
+                                            avatar={
+                                                <Avatar
+                                                    alt={data?.recruiter?.userName}
+                                                    src={data?.recruiter?.userPicture}
+                                                />
+                                            }
+                                            title={data?.recruiter?.userName}
+                                        />
+
                                         <div> Unique ID : <span style={{ color: "green" }}>{data.id}</span></div>
                                         <div> Resource Type : <span style={{ color: "orange" }}>{data.applicantType}</span> </div>
-                                        
+
                                     </Typography>
                                     <Typography variant="h6" gutterBottom sx={{ paddingBottom: 5 }}>
                                         <div style={{ margin: "4px" }}><AnimatedModal remarks={data.remarks} recruiter={data.recruiter} ></AnimatedModal>                                        </div>
@@ -225,8 +231,8 @@ function Bootcamp() {
                                         </InputLabel>
                                     </Grid>
                                     <Grid item xs={12} sm={10}>
-                                    <ChipsArray type="university" items={data.university}></ChipsArray>
-                                  
+                                        <ChipsArray type="university" items={data.university}></ChipsArray>
+
 
                                         {/* <TextField
                                             required
