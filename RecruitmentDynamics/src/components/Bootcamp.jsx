@@ -161,8 +161,8 @@ function Bootcamp() {
                                     <Grid item xs={12} sm={10}>
                                         <TextField
                                             required
-                                            id={data.name}
-                                            name={data.name}
+                                            id="name"
+                                            name="name"
                                             label={data.name}
                                             helperText
                                             fullWidth
@@ -185,8 +185,8 @@ function Bootcamp() {
                                     <Grid item xs={12} sm={10}>
                                         <TextField
                                             required
-                                            id={data.email}
-                                            name={data.email}
+                                            id="email"
+                                            name="email"
                                             label={data.email}
                                             helperText
                                             fullWidth
@@ -209,8 +209,8 @@ function Bootcamp() {
                                     <Grid item xs={12} sm={10}>
                                         <TextField
                                             required
-                                            id={data.phone}
-                                            name={data.phone}
+                                            id="phone"
+                                            name="phone"
                                             label={data.phone}
                                             helperText
                                             fullWidth
