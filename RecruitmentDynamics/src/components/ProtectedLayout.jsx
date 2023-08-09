@@ -1,6 +1,6 @@
 import { Link, Navigate, useOutlet } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import  Sidebar  from "./Sidebar";
+import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 import { ProSidebarProvider } from "react-pro-sidebar";
 export const ProtectedLayout = () => {
@@ -13,13 +13,13 @@ export const ProtectedLayout = () => {
 
   return (
     <>
-    <Topbar></Topbar>
-   
-    <ProSidebarProvider>
-    <Sidebar>     
- </Sidebar>
+      <Topbar></Topbar>
 
-    </ProSidebarProvider>
+      <ProSidebarProvider>
+        <Sidebar>
+        </Sidebar>
+
+      </ProSidebarProvider>
 
     </>
   );
