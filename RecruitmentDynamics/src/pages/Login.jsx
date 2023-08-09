@@ -10,12 +10,39 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Link as RouterLink } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { Alert, IconButton, Snackbar } from "@mui/material";
+import { GridCloseIcon } from "@mui/x-data-grid";
 
 export const LoginPage = () => {
-  const { login } = useAuth();
+  const { login,error } = useAuth();
+  const [open, setOpen] = React.useState(true);
 
+ 
+  const handleClose = (event, reason) => {
+    localStorage.setItem("error",null);
+    setOpen(false);
+  };
+  const action = (
+    <React.Fragment>
+      {error?.response} 
+      <Button color="secondary" size="small" onClick={handleClose}>
+        UNDO
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+       
+      </IconButton>
+    </React.Fragment>
+  );
+
+  
   const handleSubmit = (event) => {
     event.preventDefault();
+    
     const data = new FormData(event.currentTarget);
     login({
       email: data.get("email"),
@@ -33,6 +60,9 @@ export const LoginPage = () => {
           alignItems: "center"
         }}
       >
+
+    
+
         <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
           <LockOutlinedIcon />
         </Avatar>
@@ -78,6 +108,33 @@ export const LoginPage = () => {
             </Grid>
           </Grid>
         </Box>
+
+     
+
+   
+        {
+
+        error!==null?
+
+        <Snackbar
+        anchorOrigin={ { vertical: 'top', horizontal: 'right' }}
+        open={open}
+       
+        onClose={handleClose}
+        message="Login Error "
+        action={action}
+      />
+        // <Snackbar anchorOrigin={ { vertical: 'top', horizontal: 'right' }}
+        // open={true}   
+        // message={
+        //   <Alert  severity="error" sx={{ width: '100%' }}>
+        //   The profile {error.response} uploaded now you can farmed it!
+        //   </Alert>}
+        // onClose={() => alert()}
+        // key={error.response}/>
+        // 
+        :<></>
+      } 
       </Box>
     </Container>
   );

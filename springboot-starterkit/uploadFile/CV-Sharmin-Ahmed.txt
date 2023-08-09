@@ -1,0 +1,175 @@
+         SHARMIN JAHAN AHMED
+          sharmin22193@gmail.com
+           Cell: (571)-477-7269
+
+      
+US-Citizen with active secret clearance and over 8 years of software testing experience seeking a challenging position as a Software QA Engineer/Tester based on strong analytical background, extensive experience in US Government, Financial and Health industries.
+
+PROFESSIONAL SUMMARY:
+
+
+•	In depth knowledge in Software Development Life Cycle (SDLC) and its different types of methodologies such as Waterfall, V-Model and Agile (Scrum).
+•	Interpret data, analyze results using statistical techniques and provide ongoing reports. Develop and implement data collection systems and other strategies that optimize statistical efficiency and data quality
+•	Defined Test Scope and Strategy for a release and managed them based on the change in Requirements.
+•	Involved and participated in requirements analysis, review and working sessions to understand the requirements and system design.
+•	Experienced in working with the Business Analyst to understand the business process and develop Test Strategy. 
+•	Experienced in all Testing Activities including (Requirement review, develop test case, functional test scenarios Test Strategy, Test Plan, Environment Setup, Test Execution, Log Defect and Test report and Support from Customer Site).
+•	Expert in writing, documenting, or reviewing Test Plan, Requirement Document, Design Document, Technical Specification Design, Functional Requirement Specifications and Requirement Traceability Matrix (RTM).
+•	Involved in estimation of test effort and co-ordinate test schedule with overall project schedule and deliverables.
+•	Experienced in Manual and Automation testing for Web and Client/Server applications.
+•	Strong experience in different types of testing such as System, Functional, Integration, Regression, Back End, 508 compliance testing, Positive, Negative, Black Box, White Box, and support client to Customer Accept testing.
+•	Experienced in using various HP/Mercury testing tools such as, ALM/QC, Microsoft test manager, Devops, knowledge of Selenium.
+•	Closely worked with the developer and the other team members to solve any technical and end user issues. 
+•	Very strong in writing complex SQL queries and testing all the database applications of RDBMS in ORACLE 10g, SQL Server 2008 .
+•	Worked as a Production Support tester and completed tasks on time under very tight deadlines.
+•	Monitored the work Progress and represented the status report to the upper management on weekly basis.
+•	Worked closely with cross functional teams (technical and Business teams) to meet on time delivery on time.
+•	Strong working knowledge of MS-Project, Excel, Word, PowerPoint, Outlook, Windows, UNIX, Linux. 
+•	Strong communication, presentation, and interpersonal skills as well as strong problem-solving skills and a great team player 
+•	Verticals. Hands on experience domain of Medicare, Medicaid, or healthcare
+•	Excellent communication, presentation and interpersonal skills as well as strong problem-solving skills and a great team player. 
+
+Skill Sets:
+Testing Tools	HP ALM 11.5, Quick Test Professional 11/UFT 12, Microsoft Test Manger, Rally. Bag tracking tools JIRA. TestComplete, Devops
+Programming Languages	VBScripts, VBA.Net, Java, Perl, Python, Ruby, VB Script, JavaScript, HTML, DHTML, XML, PL/SQL, T-SQL ,CSS3
+Data Bases	Oracle 11g, SQL Server 2008 R2, TOAD, DB2, MySQL, Vista, PowerBI, Teradata RDBMS
+Operating Systems	Windows, Unix/Linux
+Browsers	Netscape, Internet Explorer, Mozilla, Firefox, Safari, Google Chrome
+
+PROFESSIONAL EXPERIENCE:
+
+Test Engineer / QA Specialist
+Leidos | Client: DISA | Fort Meade Maryland| 01/2022– Present
+Responsibilities: 
+•	Worked as test engineer on doing requirements analysis; software design analysis, reviewing all specifications and updating or correcting as needed, user documentation inspection; develop test planning and the Test execution (functional, integration, regression and more), evaluating the test results and Submitting the reporting after completing the analysis, operational test scenario development, and developing and executing site acceptance testing at multiple end User locations as necessary.
+•	 Reviewed and evaluation of products and processes and participation in various Engineering review boards.
+•	 Developed solutions to technical problems that may require collaboration with internal experts. Regularly communicates with internal project team members, management, and external organizations and customers as necessary.
+•	 Ensured project schedules and performance requirements are met.
+•	 Worked with customer and the team to developer specific objectives and creates process to integrate
+Those  objectives.
+
+
+Test Engineer / QA Specialist
+22nd century | Client: DOD | Alexandria, VA | 06/2021– 01/2022
+
+Project Description:
+The Defense Case Activity Tracking System Enterprise (D-CATSe) is an enterprise Case Management. System that tracks, collects, manages, and reports information about allegations of fraud, waste, abuse, and the whistleblower, reprisal, military restriction, and senior official investigations that result. From these allegations.
+
+D-CATSe performs the following functions:
+
+•	Records Complaints, allegations of wrongdoing, and requests for assistance
+•	Document’s inquiries
+•	Compiles metrics
+•	Provides prompt, responsive, and accurate information regarding the status of a Case
+•	Provides a record of Complaint decision
+•	Records actions taken and notifications of interested parties and agencies
+•	Provides historical information on closed Cases.
+
+Responsibilities: 
+•	Create new task with detailed steps in Azure DevOps where all user stories are stored.
+•	Ensure the RTM is accurate
+•	Create test scripts for each test scenario, as per SMEs instructions
+•	Get the script completed with internal review and lead.
+•	Create video for sharing with SME and management.
+•	Learn the application and the automation tool that is leveraged.
+•	Ensure all results are stored properly for future verification.
+
+
+SOFTWARE QA TESTER
+ProSphere LLC | Client: Department of Veteran Affairs| Alexandria, VA | 08/2019– 11/2020
+ 
+Project Description: Community Care (CCPPIS) is a program and support office within the Veterans Health Administration (VHA) that manages “front-end” elements of interaction with VA’s Health Care System. It provides oversight, review and direct service for health care eligibility and enrollment, benefits and crisis support for Veterans and beneficiaries as well as payment of claims to Community providers.
+ With the expansion of the Community Care programs, provider claims are being transitioned to 100% electronic claims which the Electronic Data Interchange (EDI) systems support under Provider Payments. With the move towards all claims being submitted as electronic claims requiring system upgrade and scalability of servers and data applications.
+ 
+Responsibilities:
+•	Work closely with EDI to ensure accuracy in data transmissions and shared processes.
+•	Interacted with the developers in fixing all the problems.
+•	Acted as a point of contact regarding defect status / resolution for the Development team, QA team.
+•	Assigned bugs to Programmer by using Quality Center bug Defect tracking tool Verifying that all the reported bugs fix thru software developers
+•	Performed Test Data set up a pre-requisite to executing use cases during system testing.
+•	Perform testing activities (including but not limited to graphical user interface (GUI), back-end, interface, regression, and records results following established project standards for software testing, defect management, and test deliverables (including the Test Plan, Test Case Specifications, Test Summary Report). Reviewed the Requirements for testability, conducted walkthroughs with developers. Responsible for creating test data manually in Facets application.
+•	Mapping requirements with Test plan in Rally.
+•	Executed the test cases and tracked defects in Quality Center.
+•	Strong understanding experiences for testing creating test cases for different EDI transaction
+•	Perform data analytical testing for the BI systems
+•	Validation of data transformations and perform End-to-End data validation for ETL & BI systems
+•	Strong in ETL data validation developed using Informatica /Data stage/SSIS ETL environments
+•	Strong in BI report validation developed using Cognos/Business Objects/MicroStrategy/SSRS BI.
+•	Hands on experience of database tools (such as Oracle, SQL Server, TOAD). 
+•	hands on strong SQL skills 
+•	Hands on experience domain of Medicare, Medicaid, or healthcare verticals. Strong in SQL preparation in Oracle/SQL Server
+•	Strong knowledge on ETL and BI processes
+
+SQA TESTER
+DELOITTE LLC | Client: Defense Health Agency| Falls Church, VA | 08/2018-07/2019
+
+Project Description: At DHA, provide military intelligence to war fighters, defense policymakers and force planners in the Department of Defense and the Intelligence Community, in support of U.S. military planning and operations and weapon systems acquisition.  The project handling about 90 internal applications mainly related with Department Integration System etc. Data interchange, Data relocation, Back end validation of source data and prod data VS test data & warehouse data.
+
+Responsibilities:
+•	Analyzed the Business Requirement Documents and Functional specification documents to prepare Test cases based on Test Plans.
+•	Gathered specifications and requirements from development personnel prior to application testing.
+•	Closely interacted with Business Analysts, designers and software developers to understand application functionality and navigational flow.
+•	Performed regression, functionality, System, Interface, front end, back end, negative, positive and user acceptance Testing using manual 
+•	Used Quality Center to create Test outlines and maintained Test scripts and created, modified and debugged the Scripts.
+•	Tracked the Defects status using Quality Center and presented the status report to client every day.
+•	Used SQL, PL/SQL queries for backend testing.
+•	Created, Modified and implemented the automated Scripts using HP Quick Test Professional.
+•	Works according Performed functionality testing to make sure that application to 
+•	Involved in Regression testing using QTP.
+•	Helped the team in solving all technical issues and also acted as a point of contact to the Business Analysts and Developers.
+•	Conducted regular team meetings to drive continuous improvement in process of product delivery.
+•	Involved in the weekly status meeting and walkthroughs to discuss the upcoming releases and changes in the code or the hardware requirements and other major issues.
+
+
+
+
+SOFTWARE TESTER
+Techflow | Client: Department of Defense | Sterling, VA | 06/2017-07/2018
+
+Project Description: At DIA, provide military intelligence to war fighters, defense policymakers and force planners in the Department of Defense and the Intelligence Community, in support of U.S. military planning and operations and weapon systems acquisition.  The project handling about 90 internal applications mainly related with Department Integration System etc. Data interchange, Data relocation, Back-end validation of source data and prod data VS test data & warehouse data.
+
+Responsibilities:
+•	Manually test application for OSCAR
+•	Tracking and reporting bugs by utilizing standard defect tracking system 
+•	Developing procedures for improving and standardizing QA methodology and processes 
+•	Providing directions in peer review to ensure that the product deliverables meet the deadline. 
+•	Log defect by using JIRA
+•	Participated in SDLC meetings
+•	Helped test throughout new regulatory healthcare requirements.
+•	Conducted revenue impact testing of systems.
+•	Performed meaningful use testing procedures.
+•	Documented all testing results and made recommendations for changes and updates.
+
+QUALITY ASSURANCE SPECIALIST
+Accenture Federal /Able Vets LLC | Client: Dept of Veterans Affairs | Chantilly, VA | 01/2015– 03/2017
+
+Project Description: As a “Quality Assurance Specialist” supporting Department of Veterans Affairs’ Health Care (Remediation) Project. The project handling about 75 internal applications mainly related with veterans’ Health Care, Emergency Department Integration System etc. Data interchange, Data relocation, Back-end validation of source data and prod data VS test data & warehouse data.
+
+Responsibilities:
+•	Conducted User Acceptance Testing (UAT)/QA design, development and execution
+•	Involved in heavy mobile device testing, writing manual test cases for mobile device as well as desktop application 
+•	Performed Section 508 compliance and Usability testing against mobile devices and desktop devices in Voice Over, Talk Back and NVDA tools.
+•	Executed detailed validation of application functionality, report Data integrity, and Real-time data integration.
+•	Wrote Test Plans and Test Cases into HP Quality Center for Functional and Regression Testing.
+•	Participated in team meetings with representatives from Development, Database Management, Configuration
+•	Prepared Test Status Reports during test execution phase 
+•	Tracked and reported defect using Jira
+•	Conducted Cross Browser, Configuration, UAT and Regression Testing on the application.
+•	Performed Smoke Testing, Functional Testing, System Integration testing, and Regression testing, (UAT) User Acceptance testing and Database testing at various phases of the development and test cycles.
+•	Collaborated with team members and conducted weekly status meeting to ensure consistency
+•	Participated in weekly meeting and Daily stand up meeting, defect prioritization meetings.
+
+Environment: 
+Manual Testing, Quality Center, QTP, XML Spy, SQL Server, SOAP UI, Java Web Server, Windows, Devops
+Education:
+
+Master’s Degree in Social Science -2003
+National University of Bangladesh
+
+Technical Training & Certification:
+
+CompTIA Security+ Certification – Completed 2020 
+Azure Fundamentals Certificate
+Clearance: Secret Clearance (Active)
+CTFL Certification Completed 2021 
+

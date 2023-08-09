@@ -57,7 +57,7 @@ function Sidebar() {
           >            
           </MenuItem>
           <MenuItem
-            component={<Link to="/dashboard" className="link" />}
+            component={<Link to="/dashboard/home" className="link" />}
             icon={<GridViewRoundedIcon />}
           >
             Dashboard

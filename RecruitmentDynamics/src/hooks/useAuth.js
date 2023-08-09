@@ -7,6 +7,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useLocalStorage("user", null);
+  const [error, setError] = useLocalStorage("error", null);
   const navigate = useNavigate();
 
   const login = async (data) => {
@@ -16,7 +17,6 @@ export const AuthProvider = ({ children }) => {
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Cookie", "JSESSIONID=73ECC78F7E4796F6666C6114D967A0D9");
     
     var raw = JSON.stringify({
       "email": data.email,
@@ -35,9 +35,11 @@ export const AuthProvider = ({ children }) => {
       .then(result => {
         if(result.status!=='success'){
           setUser(null);
+          setError(result);
           navigate("/login", { replace: true });
         }else{
         setUser(result);
+        setError(null);
         console.log("The User Log "+user)}
       }
       )
@@ -47,6 +49,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
+    setError(null)
     navigate("/", { replace: true });
   };
 
@@ -54,7 +57,8 @@ export const AuthProvider = ({ children }) => {
     () => ({
       user,
       login,
-      logout
+      logout,
+      error
     }),
     [user]
   );

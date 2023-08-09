@@ -22,71 +22,72 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Link } from 'react-router-dom';
 
-function Topbar1() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+// function Topbar1() {
+//   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const { login, user, logout } = useAuth();
+//   const { login, user, logout } = useAuth();
 
-  function handleClick(event) {
-    if (anchorEl !== event.currentTarget) {
-      setAnchorEl(event.currentTarget);
-    }
-  }
+//   function handleClick(event) {
+//     if (anchorEl !== event.currentTarget) {
+//       setAnchorEl(event.currentTarget);
+//     }
+//   }
 
-  function handleClose() {
-    setAnchorEl(null);
-  }
-  return (
-    <div className="topbar">
-      <div className="topbarWrapper">
-        <div className="topLeft">
-          <span className="logo">SNVA Technologies</span>
-        </div>
+//   function handleClose() {
+//     setAnchorEl(null);
+//   }
+//   return (
+//     <div className="topbar">
+//       <div className="topbarWrapper">
+//         <div className="topLeft">
+//           <span className="logo">SNVA Technologies</span>
+//         </div>
 
-       <div> Welcome {user.user.fullName} !</div>
-        <div className="topRight">
-          <div className="topbarIconContainer">
-            <NotificationsNone />
-            <span className="topIconBadge">2</span>
-          </div>
-          <div className="topbarIconContainer">
-            <Language />
-            <span className="topIconBadge">2</span>
-          </div>
-          <div className="topbarIconContainer">
-            <Settings />
-          </div>
+//        <div> Welcome {user.user.fullName} !</div>
+//         <div className="topRight">
+//           <div className="topbarIconContainer">
+//             <NotificationsNone />
+//             <span className="topIconBadge">2</span>
+//           </div>
+//           <div className="topbarIconContainer">
+//             <Language />
+//             <span className="topIconBadge">2</span>
+//           </div>
+//           <div className="topbarIconContainer">
+//             <Settings />
+//           </div>
            
-          <Button>
-          </Button>
-          <Avatar
-            aria-owns={anchorEl ? "simple-menu" : undefined}
-            aria-haspopup="true"
-            onClick={handleClick}
-            onMouseOver={handleClick}
-            alt="Remy Sharp"
-            src={user.user.profilePicture}
-            sx={{ width: 70, height: 65 }}
-          >
-          </Avatar>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-            MenuListProps={{ onMouseLeave: handleClose }}
-          >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
-          </Menu>
+//           <Button>
+//           </Button>
+//           <Avatar
+//             aria-owns={anchorEl ? "simple-menu" : undefined}
+//             aria-haspopup="true"
+//             onClick={handleClick}
+//             onMouseOver={handleClick}
+//             alt="Remy Sharp"
+//             src={user.user.profilePicture}
+//             sx={{ width: 70, height: 65 }}
+//           >
+//           </Avatar>
+//           <Menu
+//             id="simple-menu"
+//             anchorEl={anchorEl}
+//             open={Boolean(anchorEl)}
+//             onClose={handleClose}
+//             MenuListProps={{ onMouseLeave: handleClose }}
+//           >
+//             <MenuItem onClick={handleClose}>Profile</MenuItem>
+//             <MenuItem onClick={handleClose}>My account</MenuItem>
+//             <MenuItem onClick={handleClose}>Logout</MenuItem>
+//           </Menu>
 
-        </div>
-      </div>
-    </div>
-  );
-}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 
 
@@ -173,8 +174,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      
+      <MenuItem><Link to="/dashboard/profile"></Link> Profile</MenuItem>
+      <MenuItem ><Link to="/dashboard/profile"></Link> ProfileMy account</MenuItem>
     </Menu>
   );
 

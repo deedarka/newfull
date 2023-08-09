@@ -57,7 +57,7 @@ public class MultiHttpSecurityConfig {
                     .antMatcher("/api/**")
                     .authorizeRequests()
                     .antMatchers("/api/v1/user/authenticate").permitAll()
-                    .antMatchers("/api/v1/applicant/downloadFile").permitAll()
+                    .antMatchers("/api/v1/applicant/downloadFile/**").permitAll()
 
                     .antMatchers("/api/v1/user/signup").permitAll()
                     .antMatchers("/api/v1/bootcamp/allbootcamps").permitAll()
@@ -107,7 +107,7 @@ public class MultiHttpSecurityConfig {
                     .antMatchers("/").permitAll()
                     .antMatchers("/login").permitAll()
                     .antMatchers("/signup").permitAll()
-                    .antMatchers("/api/v1/applicant/downloadFile").permitAll()
+                    .antMatchers("/api/v1/applicant/downloadFile/**").permitAll()
                     .antMatchers("/dashboard/**").hasAuthority("ADMIN")
                     .anyRequest()
                     .authenticated()
