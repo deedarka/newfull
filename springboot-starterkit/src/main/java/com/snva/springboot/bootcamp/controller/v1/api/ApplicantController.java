@@ -54,6 +54,7 @@ public class ApplicantController {
     private IResumeParsingService resumeParsingService;
 
 
+
     @Autowired
     private FileStorageService fileStorageService;
 
@@ -215,6 +216,13 @@ public class ApplicantController {
     @GetMapping("/showAll3rdPartyApplicants")
     @ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey")})
     public List<ApplicantDto> showAll3RdApplicants() {
+        return resumeParsingService.all3RdPartyApplicants();
+    }
+
+
+    @GetMapping("/dashboardModel")
+    @ApiOperation(value = "", authorizations = {@Authorization(value = "apiKey")})
+    public List<ApplicantDto> dashboardModel() {
         return resumeParsingService.all3RdPartyApplicants();
     }
 

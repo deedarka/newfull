@@ -8,6 +8,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import UploadResume from '../components/Upload';
 import { useAuth } from "../hooks/useAuth";
+import { baseurl } from '../Urlinclude';
 function BootcampList() {
   const [upload, setUpload] = useState(false);
   const { login , user,logout} = useAuth();
@@ -28,7 +29,7 @@ function BootcampList() {
       redirect: 'follow'
     };
 
-    fetch("http://localhost:8077/api/v1/applicant/listByMe", requestOptions)
+    fetch(`${baseurl}/applicant/showAllBenchApplicants`, requestOptions)
       .then(response => response.json())
       .then(result => {
         setData(result)

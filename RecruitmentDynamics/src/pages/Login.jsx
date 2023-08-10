@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { Alert, IconButton, Snackbar } from "@mui/material";
 import { GridCloseIcon } from "@mui/x-data-grid";
@@ -16,8 +16,7 @@ import { GridCloseIcon } from "@mui/x-data-grid";
 export const LoginPage = () => {
   const { login,error } = useAuth();
   const [open, setOpen] = React.useState(true);
-
- 
+  const navigate = useNavigate()
   const handleClose = (event, reason) => {
     localStorage.setItem("error",null);
     setOpen(false);
@@ -47,7 +46,9 @@ export const LoginPage = () => {
     login({
       email: data.get("email"),
       password: data.get("password")
-    });
+    });   
+    
+    
   };
 
   return (

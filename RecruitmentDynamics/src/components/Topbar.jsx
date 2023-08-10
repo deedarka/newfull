@@ -23,6 +23,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link } from 'react-router-dom';
+import ProfileAvatar from './ProfileAvatar';
 
 // function Topbar1() {
 //   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -280,7 +281,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            <IconButton
+            <ProfileAvatar user={user.user}></ProfileAvatar>
+            {/* <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
@@ -289,10 +291,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
-            </IconButton>
+               <AccountCircle /> 
+             
+            </IconButton> */}
           </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="show more"
@@ -303,7 +306,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             >
               <MoreIcon />
             </IconButton>
-          </Box>
+          </Box> */}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
