@@ -8,6 +8,8 @@ import LoadingSpinner from './LoadingSpinner';
 import { Typography } from '@mui/material';
 import UploadResume from './Upload';
 import { useAuth } from "../hooks/useAuth";
+import { baseurl } from '../Urlinclude';
+
 function BootcampList3p() {
   const { login , user,logout} = useAuth();
 
@@ -25,8 +27,8 @@ function BootcampList3p() {
       headers: myHeaders,
       redirect: 'follow'
     };
-
-    fetch("http://localhost:8077/api/v1/applicant/listByMe", requestOptions)
+    
+    fetch(`${baseurl}/applicant/showAll3rdPartyApplicants`, requestOptions)
       .then(response => response.json())
       .then(result => {
         setData(result)

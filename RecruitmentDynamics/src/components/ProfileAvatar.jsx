@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import { Avatar } from "@mui/material";
 
 function ProfileAvatar({user}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -18,14 +19,19 @@ function ProfileAvatar({user}) {
 
   return (
     <div>
-      <Button
-        aria-owns={anchorEl ? "simple-menu" : undefined}
-        aria-haspopup="true"
-        onClick={handleClick}
-        onMouseOver={handleClick}
-      >
-        Open Menu
-      </Button>
+      <Avatar 
+      sx={{
+        width:70,
+        height:65
+      }}     
+      src={user.profilePicture}
+      aria-owns={anchorEl ? "simple-menu" : undefined}
+      aria-haspopup="true"
+      onClick={handleClick}
+      onMouseOver={handleClick}
+      ></Avatar>
+      
+      
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}

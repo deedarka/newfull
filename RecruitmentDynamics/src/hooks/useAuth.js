@@ -36,6 +36,7 @@ export const AuthProvider = ({ children }) => {
         if(result.status!=='success'){
           setUser(null);
           setError(result);
+          //return result
           navigate("/login", { replace: true });
         }else{
         setUser(result);
@@ -43,8 +44,12 @@ export const AuthProvider = ({ children }) => {
         console.log("The User Log "+user)}
       }
       )
-      .catch(error => console.log('error', error));
+      .catch(error =>{
+         console.log('error', error)
+        //return error
+      });
       navigate("/dashboard/profile", { replace: true });
+      
   };
 
   const logout = () => {

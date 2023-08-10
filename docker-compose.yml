@@ -1,7 +1,7 @@
 version: "3.5"
 services:
   pyapi:
-    image: latest-py-resume:latest
+    image: dheerajthedev123/latest-py-resume:latest
     build:
         context: ./ResumeParsingApi
         dockerfile: Dockerfile
@@ -10,7 +10,7 @@ services:
     ports:
       - "5000:5000"
   api:
-    image: bootcamp-api:latest
+    image: dheerajthedev123/bootcamp-api:latest
     build:
         context: ./springboot-starterkit
         dockerfile: Dockerfile
@@ -22,5 +22,16 @@ services:
       - "8077:8077"
     depends_on:
       - pyapi
+  webapp:
+    image: dheerajthedev123/recruitment-client:latest
+    build:
+        context: ./RecruitmentDynamics
+        dockerfile: Dockerfile
+    container_name: recruitmentdynamics-client-container
+    restart: on-failure    
+    ports:
+      - "80:80"
+    depends_on:
+      - api
 
 
