@@ -20,6 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.snva.springboot.bootcamp.exception.EntityType.USER;
 import static com.snva.springboot.bootcamp.exception.ExceptionType.DUPLICATE_ENTITY;
@@ -51,28 +52,31 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto signup(UserDto userDto) {
         Role userRole;
+        Set<Role> filteredRoles = null;
         User user = userRepository.findByEmail(userDto.getEmail());
         if (user == null) {
 
             if (userDto.isAdmin()) {
                 userRole = roleRepository.findByRole(UserRoles.ADMIN.name());
+                filteredRoles.add(userRole);
             } else {
-                userRole = roleRepository.findByRole(UserRoles.PARTICIPANT.name());
+                Set<Role> rolesF = RoleMapper.toRoleSet( userDto.getRoles()).stream().collect(Collectors.toSet());
+                filteredRoles =roleRepository.findAll().stream()
+                        .flatMap(sRoles ->
+                                rolesF.stream().filter(rRole -> sRoles.getId().equals(rRole.getId()))
+                        )
+                        .collect(Collectors.toSet());
             }
             UserProfile userProfile= new UserProfile(userDto.getEmail());
             Set<UserProfile> userProfileSet = new HashSet<>();
-
-
             userProfileSet.add(userProfile);
-
             userProfile = profileRepository.save(userProfile);
-
 
             user = new User()
                     .setAddress("")
                     .setEmail(userDto.getEmail())
                     .setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()))
-                    .setRoles(new HashSet<>(Arrays.asList(userRole)))
+                    .setRoles(filteredRoles)
                     .setFirstName(userDto.getFirstName())
                     .setLastName(userDto.getLastName())
                     .setProfilePicture(userDto.getProfilePicture())

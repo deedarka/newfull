@@ -1,20 +1,49 @@
+import { makeStyles } from "@material-ui/core/styles";
 import '../css/page/productList.css'
+import Hidden from "@material-ui/core/Hidden";
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@material-ui/icons";
 import { productRows } from "../dummyData";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LoadingSpinner from './LoadingSpinner';
-import { Typography } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import UploadResume from './Upload';
 import { useAuth } from "../hooks/useAuth";
 import { baseurl } from '../Urlinclude';
+import { green } from '@mui/material/colors';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(12, 4)
+  },
+  card: {
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    border: "1px solid black",
+    borderRadius: "5px",
+    textAlign: "center"
+  },
+  icon: {
+    padding: theme.spacing(2, 0)
+  },
+  title: {
+    padding: theme.spacing(2)
+  },
+  featureList: {
+    padding: theme.spacing(2)
+  }
+}));
 
 function BootcampList3p() {
   const { login , user,logout} = useAuth();
-
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({})
+  const classes = useStyles();
+
+  
 
   useEffect(() => {
     setLoading(true);
@@ -74,19 +103,19 @@ function BootcampList3p() {
   }
 
 console.log("TTTTT"+ JSON.stringify(user))
-  // const [data, setData] = useState(productRows);
 
-  // const handleDelete = (id) => {
-  //   setData(data.filter((item) => item.id !== id));
-  // };
 user.applicantType="3rdparty"
 
+  
   return (
-    <div className="applicantList">
-      <div className="productTitleContainer">
-        <h1 className="productTitle">All 3Rd Party Applicants</h1>
+    <Container component="section" maxWidth="lg" className={classes.root} flex>
+    <Grid  >
+        <h1 >All Bootcamp Applicants</h1>
         
-      </div>
+        </Grid>
+      <Typography ></Typography>
+    
+    
       <Typography gutterBottom sx={{ paddingBottom: 5 }}>
 
         <button variant="h6" style={{margin:"10px"}} className="productTitle applicantsAll"  sx={{ padding: 5 }} >All</button>
@@ -95,15 +124,17 @@ user.applicantType="3rdparty"
          <span>Upload a profile ? <UploadResume profile={JSON.stringify(user)}></UploadResume></span> 
       
       </Typography>
-
-      <DataGrid
+<Hidden>
+      <DataGrid 
+        mdDown
         rows={data}
         disableSelectionOnClick
         columns={columns}
         pageSize={data.length}
 
       />
-    </div>
+      </Hidden>
+    </Container>
   );
 }
 

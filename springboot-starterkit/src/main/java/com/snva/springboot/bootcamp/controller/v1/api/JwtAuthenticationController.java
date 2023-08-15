@@ -123,6 +123,7 @@ public class JwtAuthenticationController {
                 .setFirstName(userSignupRequest.getFirstName())
                 .setLastName(userSignupRequest.getLastName())
                 .setMobileNumber(userSignupRequest.getMobileNumber())
+                .setRoles(userSignupRequest.getRole())
                 .setProfilePicture("https://i.pinimg.com/736x/65/49/ca/6549cacdca6c392649a70153981bd27d.jpg")
                 .setAdmin(isAdmin);
         return userService.signup(userDto);
